@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 
-import { TEMP_DIR } from '../constants';
+import { TEMP_DIR } from './constants';
 
 const LICENSE_DIR = join(TEMP_DIR, 'license');
 

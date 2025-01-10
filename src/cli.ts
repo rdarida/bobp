@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
 
-import { LicenseOptions, license } from '.';
+import { LicenseOptions, license, prettier } from '.';
 
 yargs
   .scriptName('bobp')
@@ -9,7 +9,7 @@ yargs
   .demandCommand(1, 'Need 1')
   .command<LicenseOptions>(
     'license <author> [year] [type]',
-    'Someting',
+    'license description',
     yargs => {
       return yargs
         .positional('author', {
@@ -29,6 +29,12 @@ yargs
         });
     },
     options => license(options)
+  )
+  .command(
+    'prettier',
+    'prettier description',
+    yargs => yargs,
+    () => prettier()
   )
   .help()
   .strict()
