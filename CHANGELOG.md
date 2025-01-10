@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/rdarida/bobp/compare/v0.0.3...v0.0.4) (2025-01-10)
+
+
+### Bug Fixes
+
+* remove console.log, write content into LICENSE ([33e8825](https://github.com/rdarida/bobp/commit/33e8825a8e34c65340d8625b789a9246a93eef48))
+
 ### [0.0.3](https://github.com/rdarida/bobp/compare/v0.0.2...v0.0.3) (2025-01-10)
 
 
