@@ -17,6 +17,5 @@ export function license({ type, year, author }: LicenseOptions): void {
   const template = readFileSync(filePath, { encoding: 'utf-8' });
   const content = template.replace('[year]', year).replace('[author]', author);
   const destination = join(process.cwd(), 'LICENSE');
-  console.log(content);
-  // writeFileSync(destination, content);
+  writeFileSync(destination, content);
 }
