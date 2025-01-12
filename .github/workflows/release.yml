@@ -10,16 +10,8 @@ on:
       - templates/**
       - tests/**
 
-  workflow_dispatch:
-
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: 'pages'
-  cancel-in-progress: false
 
 jobs:
   release:
@@ -27,17 +19,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
 
       - name: Set up Git user
         run: |
@@ -50,39 +37,11 @@ jobs:
       - name: Test
         run: |
           npm run lint
-          npm test -- --collectCoverage
+          npm test
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: Publish
+      - name: Release and publish
         run: |
           npm run release
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-
-      - name: Generate documentation
-        run: npm run docs
-
-      - name: Move coverage into docs
-        run: mv coverage/lcov-report docs/coverage
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./docs
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: release
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
