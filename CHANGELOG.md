@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/rdarida/bobp/compare/v0.0.7...v0.0.9) (2025-03-27)
+
+### [0.0.8](https://github.com/rdarida/bobp/compare/v0.0.7...v0.0.8) (2025-03-27)
+
 ### 0.0.7 (2025-01-12)
 
 ### [0.0.6](https://github.com/rdarida/bobp/compare/v0.0.5...v0.0.6) (2025-01-10)
