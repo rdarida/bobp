@@ -1,7 +1,7 @@
 {
   "name": "bobp",
   "version": "0.0.7",
-  "description": "",
+  "description": "How can I help you, Bobp?",
   "keywords": [],
   "license": "MIT",
   "author": "Róbert Darida",
@@ -31,7 +31,7 @@
     "release": "standard-version",
     "postrelease": "git push --follow-tags origin HEAD",
     "predocs": "rimraf ./docs",
-    "docs": "typedoc --out ./docs --exclude \"./src/cli.ts\" ./src"
+    "docs": "typedoc"
   },
   "dependencies": {
     "yargs": "^17.7.2"

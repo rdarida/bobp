@@ -2,11 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_run:
-    workflows: ['Release']
+    workflows: ['Publish']
     types:
       - completed
-
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -26,7 +24,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true
 
       - name: Set up NodeJS
         uses: actions/setup-node@v4
