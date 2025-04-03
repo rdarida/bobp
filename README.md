@@ -24,7 +24,7 @@
 # bobp
 How can I help you, Bobp?
 
-### Greetings, wayward traveler!
+## Greetings, wayward traveler!
 This most excellent piece of software awaits you, whether fate led you here or
 you simply botched a search. **Either way, welcome!**
 
