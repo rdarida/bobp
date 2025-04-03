@@ -24,8 +24,17 @@
 # bobp
 How can I help you, Bobp?
 
+### Greetings, wayward traveler!
+This most excellent piece of software awaits you, whether fate led you here or
+you simply botched a search. **Either way, welcome!**
+
+I originally created this tool for my own use, tailoring it to my needs. But if
+you find it useful too, I’m glad it can help!
+
 ## Installation
-TBD
+```sh
+npm i -g bobp
+```
 
 <hr>
 
