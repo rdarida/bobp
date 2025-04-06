@@ -11,29 +11,29 @@ export function cover(title = 'title', description = 'description'): void {
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = '#001220';
+  ctx.fillStyle = '#efefef'; //'#001220';
   ctx.fillRect(0, 0, width, height);
 
   ctx.font = '700 80px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
   ctx.textAlign = 'center';
 
-  const titleHeight = getTextBox(ctx.measureText(title));
-  const cy = (height - titleHeight * 2) * 0.5;
+  const text = getTextBox(ctx.measureText(title));
+  const cy = (height - text.h * 2) * 0.5;
 
   ctx.fillStyle = 'red';
-  ctx.fillRect(0, cy, width, titleHeight * 2);
+  ctx.fillRect(0, cy, width, text.h * 2);
 
   ctx.fillStyle = 'white';
-  ctx.fillText(title, width * 0.5, cy + titleHeight);
+  ctx.fillText(title, width * 0.5, cy + text.h);
 
   ctx.font = '300 48px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
-  ctx.fillText(description, width * 0.5, cy + titleHeight * 2);
+  ctx.fillText(description, width * 0.5, cy + text.h * 2);
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
 }
 
-function getTextBox(metrics: TextMetrics): number {
+function getTextBox(metrics: TextMetrics): { h: number } {
   const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
-  return actualBoundingBoxAscent + actualBoundingBoxDescent;
+  return { h: actualBoundingBoxAscent + actualBoundingBoxDescent };
 }
