@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { createCanvas } from 'canvas';
+import { createCanvas, TextMetrics } from 'canvas';
 import { createWriteStream } from 'fs';
 
 const TEST_TEXT = 'TgByAQpjkl';
@@ -17,12 +17,7 @@ export function cover(title = 'title', description = 'description'): void {
   ctx.font = '700 80px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
   ctx.textAlign = 'center';
 
-  const {
-    actualBoundingBoxAscent: titleAscent,
-    actualBoundingBoxDescent: titleDescent
-  } = ctx.measureText(title);
-
-  const titleHeight = titleAscent + titleDescent;
+  const titleHeight = getTextBox(ctx.measureText(title));
   const cy = (height - titleHeight * 2) * 0.5;
 
   ctx.fillStyle = 'red';
@@ -36,4 +31,9 @@ export function cover(title = 'title', description = 'description'): void {
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
+}
+
+function getTextBox(metrics: TextMetrics): number {
+  const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
+  return actualBoundingBoxAscent + actualBoundingBoxDescent;
 }
