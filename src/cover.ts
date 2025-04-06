@@ -2,13 +2,10 @@ import { join } from 'path';
 import { createCanvas } from 'canvas';
 import { createWriteStream } from 'fs';
 
-import { TEMP_DIR } from './constants';
-
-const COVER_DIR = join(TEMP_DIR, 'cover');
+const TEST_TEXT = 'TgByAQpjkl';
 
 export function cover(title = 'title', description = 'description'): void {
-  title = title.toUpperCase();
-  description = description.toUpperCase();
+  title = title.toLowerCase();
 
   const canvas = createCanvas(1280, 640);
   const { width, height } = canvas;
@@ -17,7 +14,7 @@ export function cover(title = 'title', description = 'description'): void {
   ctx.fillStyle = '#001220';
   ctx.fillRect(0, 0, width, height);
 
-  ctx.font = '900 80px "Arial Black", sans-serif';
+  ctx.font = '700 80px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
   ctx.textAlign = 'center';
 
   const {
@@ -34,7 +31,7 @@ export function cover(title = 'title', description = 'description'): void {
   ctx.fillStyle = 'white';
   ctx.fillText(title, width * 0.5, cy + titleHeight);
 
-  ctx.font = '300 48px Arial, sans-serif';
+  ctx.font = '300 48px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
   ctx.fillText(description, width * 0.5, cy + titleHeight * 2);
 
   const output = join(__dirname, '..', 'cover.png');
