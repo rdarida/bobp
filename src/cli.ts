@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
 
-import { LicenseOptions, license, prettier } from '.';
+import { LicenseOptions, cover, license, prettier } from '.';
 
 yargs
   .scriptName('bobp')
@@ -35,6 +35,12 @@ yargs
     'prettier description',
     yargs => yargs,
     () => prettier()
+  )
+  .command(
+    'cover',
+    'cover description',
+    yargs => yargs,
+    () => cover()
   )
   .help()
   .strict()
