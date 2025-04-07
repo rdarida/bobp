@@ -12,44 +12,49 @@ type TextBox = {
   h: number;
 };
 
-export function cover(title = 'title', description = 'description'): void {
-  title = title.toLowerCase();
-
+export function cover(title = TEST_TEXT, description = 'description'): void {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
 
-  const x = 0;
-  const y = 0;
-
-  ctx.fillStyle = '#efefef'; //'#001220';
+  ctx.fillStyle = '#001220';
   ctx.fillRect(0, 0, width, height);
 
-  ctx.font = '700 80px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
   ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
 
-  const text = getTextBox(ctx.measureText(title), x, y);
-  const cy = (height - text.h * 2) * 0.5;
+  ctx.font = '700 80px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+  const titleBox = getTextBox(ctx.measureText(title));
 
   ctx.fillStyle = 'red';
-  ctx.fillRect(0, cy, width, text.h * 2);
+  ctx.fillRect(0, titleBox.by, width, titleBox.h);
 
   ctx.fillStyle = 'white';
-  ctx.fillText(title, width * 0.5, cy + text.h);
+  ctx.fillText(title, width * 0.5, titleBox.ty);
 
   ctx.font = '300 48px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
-  ctx.fillText(description, width * 0.5, cy + text.h * 2);
+
+  const lineBox = getTextBox(ctx.measureText(description));
+  const baseY = 62;
+
+  ctx.fillStyle = 'green';
+  ctx.fillRect(0, baseY + lineBox.by, width, lineBox.h);
+
+  ctx.fillStyle = 'white';
+  ctx.fillText(description, width * 0.5, baseY + lineBox.ty);
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
 }
 
-function getTextBox(metrics: TextMetrics, x: number, y: number): TextBox {
+function getTextBox(metrics: TextMetrics): TextBox {
   const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
+  const h = actualBoundingBoxAscent + actualBoundingBoxDescent;
+  const d = actualBoundingBoxDescent - actualBoundingBoxAscent;
 
   return {
-    by: 0,
-    ty: 0,
-    h: actualBoundingBoxAscent + actualBoundingBoxDescent
+    by: Math.round((HEIGHT - h) * 0.5),
+    ty: Math.round((HEIGHT - d) * 0.5),
+    h
   };
 }
