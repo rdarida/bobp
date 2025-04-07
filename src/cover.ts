@@ -45,13 +45,11 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
       .map(line => ({ str: line, font: DESC_STYLE, baseY: 62, ...DEFAULT_BOX }))
   ].map(text => getTextBox(ctx, text));
 
-  const [titleBox, lineBox] = texts;
-
-  drawRect(ctx, 0, titleBox.baseY + titleBox.by, width, titleBox.h);
-  drawText(ctx, titleBox, width * 0.5, titleBox.baseY + titleBox.ty);
-
-  drawRect(ctx, 0, lineBox.baseY + lineBox.by, width, lineBox.h);
-  drawText(ctx, lineBox, width * 0.5, lineBox.baseY + lineBox.ty);
+  texts.forEach(text => {
+    const { baseY, by, ty, h } = text;
+    drawRect(ctx, 0, baseY + by, width, h);
+    drawText(ctx, text, width * 0.5, baseY + ty);
+  });
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
