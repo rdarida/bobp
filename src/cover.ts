@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { createCanvas, TextMetrics } from 'canvas';
+import { CanvasRenderingContext2D, createCanvas, TextMetrics } from 'canvas';
 import { createWriteStream } from 'fs';
 
 const WIDTH = 1280;
@@ -27,29 +27,45 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.textBaseline = 'middle';
 
   ctx.font = TITLE_STYLE;
-  const titleBox = getTextBox(ctx.measureText(title));
+  const titleBox = getTextBox(ctx, title);
 
-  ctx.fillStyle = 'red';
-  ctx.fillRect(0, titleBox.by, width, titleBox.h);
-
-  ctx.fillStyle = 'white';
-  ctx.fillText(title, width * 0.5, titleBox.ty);
+  drawRect(ctx, 0, titleBox.by, width, titleBox.h);
+  drawText(ctx, title, width * 0.5, titleBox.ty);
 
   ctx.font = DESC_STYLE;
-  const lineBox = getTextBox(ctx.measureText(description));
+  const lineBox = getTextBox(ctx, description);
   const baseY = 62;
 
-  ctx.fillStyle = 'green';
-  ctx.fillRect(0, baseY + lineBox.by, width, lineBox.h);
-
-  ctx.fillStyle = 'white';
-  ctx.fillText(description, width * 0.5, baseY + lineBox.ty);
+  drawRect(ctx, 0, baseY + lineBox.by, width, lineBox.h);
+  drawText(ctx, description, width * 0.5, baseY + lineBox.ty);
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
 }
 
-function getTextBox(metrics: TextMetrics): TextBox {
+function drawRect(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number
+): void {
+  ctx.fillStyle = 'red';
+  ctx.fillRect(x, y, w, h);
+}
+
+function drawText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number
+): void {
+  ctx.fillStyle = 'white';
+  ctx.fillText(text, x, y);
+}
+
+function getTextBox(ctx: CanvasRenderingContext2D, text: string): TextBox {
+  const metrics = ctx.measureText(text);
   const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
   const h = actualBoundingBoxAscent + actualBoundingBoxDescent;
   const d = actualBoundingBoxDescent - actualBoundingBoxAscent;
