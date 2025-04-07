@@ -27,13 +27,6 @@ const DEFAULT_BOX: TextBox = {
 };
 
 export function cover(title = TEST_TEXT, description = 'description'): void {
-  const texts: Text[] = [
-    { str: title, font: TITLE_STYLE, ...DEFAULT_BOX },
-    ...description
-      .split('\n')
-      .map(line => ({ str: line, font: DESC_STYLE, ...DEFAULT_BOX }))
-  ];
-
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
@@ -44,23 +37,18 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  texts[0] = {
-    ...texts[0],
-    ...getTextBox(ctx, texts[0])
-  };
+  const texts: Text[] = [
+    { str: title, font: TITLE_STYLE, ...DEFAULT_BOX },
+    ...description
+      .split('\n')
+      .map(line => ({ str: line, font: DESC_STYLE, ...DEFAULT_BOX }))
+  ].map(text => getTextBox(ctx, text));
 
-  const titleBox = texts[0];
+  const [titleBox, lineBox] = texts;
+  const baseY = 62;
 
   drawRect(ctx, 0, titleBox.by, width, titleBox.h);
   drawText(ctx, titleBox, width * 0.5, titleBox.ty);
-
-  texts[1] = {
-    ...texts[1],
-    ...getTextBox(ctx, texts[1])
-  };
-
-  const lineBox = texts[1];
-  const baseY = 62;
 
   drawRect(ctx, 0, baseY + lineBox.by, width, lineBox.h);
   drawText(ctx, lineBox, width * 0.5, baseY + lineBox.ty);
@@ -91,7 +79,7 @@ function drawText(
   ctx.fillText(text.str, x, y);
 }
 
-function getTextBox(ctx: CanvasRenderingContext2D, text: Text): TextBox {
+function getTextBox(ctx: CanvasRenderingContext2D, text: Text): Text {
   ctx.font = text.font;
   const metrics = ctx.measureText(text.str);
   const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
@@ -99,6 +87,7 @@ function getTextBox(ctx: CanvasRenderingContext2D, text: Text): TextBox {
   const d = actualBoundingBoxDescent - actualBoundingBoxAscent;
 
   return {
+    ...text,
     by: Math.round((HEIGHT - h) * 0.5),
     ty: Math.round((HEIGHT - d) * 0.5),
     h
