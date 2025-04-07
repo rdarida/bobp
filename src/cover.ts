@@ -11,6 +11,7 @@ type TextBox = {
 type Text = {
   str: string;
   font: string;
+  baseY: number;
 } & TextBox;
 
 const WIDTH = 1280;
@@ -38,20 +39,19 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.textBaseline = 'middle';
 
   const texts: Text[] = [
-    { str: title, font: TITLE_STYLE, ...DEFAULT_BOX },
+    { str: title, font: TITLE_STYLE, baseY: 0, ...DEFAULT_BOX },
     ...description
       .split('\n')
-      .map(line => ({ str: line, font: DESC_STYLE, ...DEFAULT_BOX }))
+      .map(line => ({ str: line, font: DESC_STYLE, baseY: 62, ...DEFAULT_BOX }))
   ].map(text => getTextBox(ctx, text));
 
   const [titleBox, lineBox] = texts;
-  const baseY = 62;
 
-  drawRect(ctx, 0, titleBox.by, width, titleBox.h);
-  drawText(ctx, titleBox, width * 0.5, titleBox.ty);
+  drawRect(ctx, 0, titleBox.baseY + titleBox.by, width, titleBox.h);
+  drawText(ctx, titleBox, width * 0.5, titleBox.baseY + titleBox.ty);
 
-  drawRect(ctx, 0, baseY + lineBox.by, width, lineBox.h);
-  drawText(ctx, lineBox, width * 0.5, baseY + lineBox.ty);
+  drawRect(ctx, 0, lineBox.baseY + lineBox.by, width, lineBox.h);
+  drawText(ctx, lineBox, width * 0.5, lineBox.baseY + lineBox.ty);
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
