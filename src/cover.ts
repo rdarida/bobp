@@ -5,6 +5,9 @@ import { createWriteStream } from 'fs';
 const WIDTH = 1280;
 const HEIGHT = 640;
 const TEST_TEXT = 'TgByAQpjkl';
+const FONT = '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+const TITLE_STYLE = `700 80px ${FONT}`;
+const DESC_STYLE = `300 48px ${FONT}`;
 
 type TextBox = {
   by: number;
@@ -23,7 +26,7 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  ctx.font = '700 80px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+  ctx.font = TITLE_STYLE;
   const titleBox = getTextBox(ctx.measureText(title));
 
   ctx.fillStyle = 'red';
@@ -32,8 +35,7 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.fillStyle = 'white';
   ctx.fillText(title, width * 0.5, titleBox.ty);
 
-  ctx.font = '300 48px "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
-
+  ctx.font = DESC_STYLE;
   const lineBox = getTextBox(ctx.measureText(description));
   const baseY = 62;
 
