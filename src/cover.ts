@@ -2,6 +2,17 @@ import { join } from 'path';
 import { CanvasRenderingContext2D, createCanvas, TextMetrics } from 'canvas';
 import { createWriteStream } from 'fs';
 
+type TextBox = {
+  by: number;
+  ty: number;
+  h: number;
+};
+
+type Text = {
+  str: string;
+  font: string;
+} & TextBox;
+
 const WIDTH = 1280;
 const HEIGHT = 640;
 const TEST_TEXT = 'TgByAQpjkl';
@@ -9,13 +20,20 @@ const FONT = '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 const TITLE_STYLE = `700 80px ${FONT}`;
 const DESC_STYLE = `300 48px ${FONT}`;
 
-type TextBox = {
-  by: number;
-  ty: number;
-  h: number;
+const DEFAULT_BOX: TextBox = {
+  by: 0,
+  ty: 0,
+  h: 0
 };
 
 export function cover(title = TEST_TEXT, description = 'description'): void {
+  const texts: Text[] = [
+    { str: title, font: TITLE_STYLE, ...DEFAULT_BOX },
+    ...description
+      .split('\n')
+      .map(line => ({ str: line, font: DESC_STYLE, ...DEFAULT_BOX }))
+  ];
+
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
@@ -26,18 +44,26 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  ctx.font = TITLE_STYLE;
-  const titleBox = getTextBox(ctx, title);
+  texts[0] = {
+    ...texts[0],
+    ...getTextBox(ctx, texts[0])
+  };
+
+  const titleBox = texts[0];
 
   drawRect(ctx, 0, titleBox.by, width, titleBox.h);
-  drawText(ctx, title, width * 0.5, titleBox.ty);
+  drawText(ctx, titleBox, width * 0.5, titleBox.ty);
 
-  ctx.font = DESC_STYLE;
-  const lineBox = getTextBox(ctx, description);
+  texts[1] = {
+    ...texts[1],
+    ...getTextBox(ctx, texts[1])
+  };
+
+  const lineBox = texts[1];
   const baseY = 62;
 
   drawRect(ctx, 0, baseY + lineBox.by, width, lineBox.h);
-  drawText(ctx, description, width * 0.5, baseY + lineBox.ty);
+  drawText(ctx, lineBox, width * 0.5, baseY + lineBox.ty);
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
@@ -56,16 +82,18 @@ function drawRect(
 
 function drawText(
   ctx: CanvasRenderingContext2D,
-  text: string,
+  text: Text,
   x: number,
   y: number
 ): void {
   ctx.fillStyle = 'white';
-  ctx.fillText(text, x, y);
+  ctx.font = text.font;
+  ctx.fillText(text.str, x, y);
 }
 
-function getTextBox(ctx: CanvasRenderingContext2D, text: string): TextBox {
-  const metrics = ctx.measureText(text);
+function getTextBox(ctx: CanvasRenderingContext2D, text: Text): TextBox {
+  ctx.font = text.font;
+  const metrics = ctx.measureText(text.str);
   const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
   const h = actualBoundingBoxAscent + actualBoundingBoxDescent;
   const d = actualBoundingBoxDescent - actualBoundingBoxAscent;
