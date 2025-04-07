@@ -2,12 +2,20 @@ import { join } from 'path';
 import { createCanvas, TextMetrics } from 'canvas';
 import { createWriteStream } from 'fs';
 
+const WIDTH = 1280;
+const HEIGHT = 640;
 const TEST_TEXT = 'TgByAQpjkl';
+
+type TextBox = {
+  by: number;
+  ty: number;
+  h: number;
+};
 
 export function cover(title = 'title', description = 'description'): void {
   title = title.toLowerCase();
 
-  const canvas = createCanvas(1280, 640);
+  const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
 
@@ -36,7 +44,12 @@ export function cover(title = 'title', description = 'description'): void {
   canvas.createPNGStream().pipe(createWriteStream(output));
 }
 
-function getTextBox(metrics: TextMetrics, x: number, y: number): { h: number } {
+function getTextBox(metrics: TextMetrics, x: number, y: number): TextBox {
   const { actualBoundingBoxAscent, actualBoundingBoxDescent } = metrics;
-  return { h: actualBoundingBoxAscent + actualBoundingBoxDescent };
+
+  return {
+    by: 0,
+    ty: 0,
+    h: actualBoundingBoxAscent + actualBoundingBoxDescent
+  };
 }
