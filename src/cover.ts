@@ -1,16 +1,14 @@
 import { join } from 'path';
-import { CanvasRenderingContext2D, createCanvas, TextMetrics } from 'canvas';
+import { CanvasRenderingContext2D, createCanvas } from 'canvas';
 import { createWriteStream } from 'fs';
-
-type TextBox = {
-  ty: number;
-  h: number;
-};
 
 type Text = {
   str: string;
   font: string;
-} & TextBox;
+  y: number;
+  h: number;
+  g: number;
+};
 
 const WIDTH = 1280;
 const HEIGHT = 640;
@@ -18,12 +16,7 @@ const TEST_TEXT = 'TgByAQpjkl';
 const FONT = '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 const TITLE_STYLE = `700 80px ${FONT}`;
 const DESC_STYLE = `300 48px ${FONT}`;
-const LINE_GAP = 12;
-
-const DEFAULT_BOX: TextBox = {
-  ty: 0,
-  h: 0
-};
+const LINE_GAP = 1.2;
 
 export function cover(
   title = TEST_TEXT,
@@ -40,15 +33,19 @@ export function cover(
   ctx.textBaseline = 'top';
 
   const texts: Text[] = [
-    { str: title, font: TITLE_STYLE, baseY: 0, ...DEFAULT_BOX },
+    { str: title, font: TITLE_STYLE, y: 0, h: 0, g: 1.3 },
     ...description
       .split('\n')
-      .map(line => ({ str: line, font: DESC_STYLE, baseY: 62, ...DEFAULT_BOX }))
+      .map(line => ({ str: line, font: DESC_STYLE, y: 0, h: 0, g: LINE_GAP }))
   ].map(text => getTextBox(ctx, text));
 
-  const sumHeight = texts.reduce((p, text) => p + text.h, 0);
-  let offsetY = Math.round((HEIGHT - sumHeight) * 0.5);
-  console.log(offsetY, sumHeight, offsetY + sumHeight + offsetY);
+  let sumHeight = texts[texts.length - 1].h;
+  sumHeight -= sumHeight / LINE_GAP;
+  sumHeight = texts.reduce((p, text) => p + text.h, -sumHeight);
+  sumHeight = Math.ceil(sumHeight);
+
+  let offsetY = Math.floor((HEIGHT - sumHeight) * 0.5);
+  console.log(offsetY, sumHeight, 2 * offsetY + sumHeight);
 
   for (const text of texts) {
     drawText(ctx, text, offsetY);
@@ -60,18 +57,9 @@ export function cover(
 }
 
 function drawText(ctx: CanvasRenderingContext2D, text: Text, y: number): void {
-  drawRect(ctx, text, y);
-
-  const { font, str, ty } = text;
-
   ctx.fillStyle = 'white';
-  ctx.font = font;
-  ctx.fillText(str, WIDTH * 0.5, y + ty);
-}
-
-function drawRect(ctx: CanvasRenderingContext2D, text: Text, y: number): void {
-  ctx.fillStyle = 'red';
-  ctx.fillRect(0, y, WIDTH, text.h);
+  ctx.font = text.font;
+  ctx.fillText(text.str, WIDTH * 0.5, y + text.y);
 }
 
 function getTextBox(ctx: CanvasRenderingContext2D, text: Text): Text {
@@ -82,7 +70,7 @@ function getTextBox(ctx: CanvasRenderingContext2D, text: Text): Text {
 
   return {
     ...text,
-    ty: actualBoundingBoxAscent,
-    h
+    y: actualBoundingBoxAscent,
+    h: h * text.g
   };
 }
