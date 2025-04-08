@@ -1,12 +1,15 @@
-import { bobp } from '../src/index';
+import { cover, license, prettier } from '../src/index';
 
-describe('Test index', () => {
-  test('bobp should be exported', () => {
-    expect(bobp).toBeTruthy();
+describe('Test exports', () => {
+  it('should export cover function', () => {
+    expect(cover).toBeTruthy();
   });
 
-  test('should log "Hello, bobp!"', () => {
-    const actual = bobp();
-    expect(actual).toBe('Hello, bobp!');
+  it('should export license function', () => {
+    expect(license).toBeTruthy();
+  });
+
+  it('should export prettier function', () => {
+    expect(prettier).toBeTruthy();
   });
 });
