@@ -36,7 +36,7 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
   ctx.fillRect(0, 0, width, height);
 
   ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
+  ctx.textBaseline = 'top';
 
   const texts: Text[] = [
     { str: title, font: TITLE_STYLE, baseY: 0, ...DEFAULT_BOX },
@@ -45,36 +45,36 @@ export function cover(title = TEST_TEXT, description = 'description'): void {
       .map(line => ({ str: line, font: DESC_STYLE, baseY: 62, ...DEFAULT_BOX }))
   ].map(text => getTextBox(ctx, text));
 
-  texts.forEach(text => {
-    const { baseY, by, ty, h } = text;
-    drawRect(ctx, 0, baseY + by, width, h);
-    drawText(ctx, text, width * 0.5, baseY + ty);
-  });
+  for (const text of texts) {
+    drawText(ctx, text, true);
+  }
 
   const output = join(__dirname, '..', 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
 }
 
-function drawRect(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number
-): void {
-  ctx.fillStyle = 'red';
-  ctx.fillRect(x, y, w, h);
-}
-
 function drawText(
   ctx: CanvasRenderingContext2D,
   text: Text,
-  x: number,
-  y: number
+  debug = false
 ): void {
+  if (debug) {
+    drawRect(ctx, text);
+  }
+
+  const { font, str, baseY, ty } = text;
   ctx.fillStyle = 'white';
-  ctx.font = text.font;
-  ctx.fillText(text.str, x, y);
+  ctx.font = font;
+  ctx.fillText(str, WIDTH * 0.5, baseY + ty);
+}
+
+function drawRect(
+  ctx: CanvasRenderingContext2D,
+  box: Text
+): void {
+  const { baseY, by, h } = box;
+  ctx.fillStyle = 'red';
+  ctx.fillRect(0, baseY + by, WIDTH, h);
 }
 
 function getTextBox(ctx: CanvasRenderingContext2D, text: Text): Text {
