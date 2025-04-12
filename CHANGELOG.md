@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/rdarida/bobp/compare/v0.0.12...v0.0.13) (2025-04-12)
+
+
+### Bug Fixes
+
+* fix cover command pattern ([32369ab](https://github.com/rdarida/bobp/commit/32369ab55ac308c33ded9b33e44b3caf2275ed16))
+
 ### [0.0.12](https://github.com/rdarida/bobp/compare/v0.0.11...v0.0.12) (2025-04-12)
 
 

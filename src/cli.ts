@@ -37,7 +37,7 @@ yargs
     () => prettier()
   )
   .command<CoverOptions>(
-    'cover',
+    'cover <title> <description>',
     'cover description',
     yargs => {
       return yargs
