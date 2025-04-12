@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
 
-import { LicenseOptions, license, prettier } from '.';
+import { CoverOptions, LicenseOptions, cover, license, prettier } from '.';
 
 yargs
   .scriptName('bobp')
@@ -35,6 +35,24 @@ yargs
     'prettier description',
     yargs => yargs,
     () => prettier()
+  )
+  .command<CoverOptions>(
+    'cover',
+    'cover description',
+    yargs => {
+      return yargs
+        .positional('title', {
+          demandOption: true,
+          describe: '',
+          type: 'string'
+        })
+        .positional('description', {
+          demandOption: true,
+          describe: '',
+          type: 'string'
+        });
+    },
+    options => cover(options)
   )
   .help()
   .strict()
