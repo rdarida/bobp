@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/rdarida/bobp/compare/v0.0.11...v0.0.12) (2025-04-12)
+
+
+### Features
+
+* add cover function to cli.ts ([b44b8e5](https://github.com/rdarida/bobp/commit/b44b8e53cb0933468bfcdbd12f49899b19f70941))
+* add x and y parameter to getTextBox function ([0d8b42f](https://github.com/rdarida/bobp/commit/0d8b42fd9dc2c19d7964536642b772fc6f89e4a5))
+* create TextBox type ([fe08962](https://github.com/rdarida/bobp/commit/fe08962230bea89d337931e41f7641bbe27fda41))
+* implement cover function ([ee07437](https://github.com/rdarida/bobp/commit/ee0743734ba624c049b40477f91912d0296e0844))
+* implement getTextBox function ([ae6c1ac](https://github.com/rdarida/bobp/commit/ae6c1ac0b96c96cd8d744cc20cb16081ad6414dd))
+* implement text positioning ([b087f4a](https://github.com/rdarida/bobp/commit/b087f4a18244e0ca8c2f7d25681ed1a69415312b))
+* set font ([a3b0565](https://github.com/rdarida/bobp/commit/a3b05659f085773fc5a6a50053369df5dd12ec78))
+
 ### [0.0.11](https://github.com/rdarida/bobp/compare/v0.0.10...v0.0.11) (2025-04-03)
 
 ### [0.0.10](https://github.com/rdarida/bobp/compare/v0.0.9...v0.0.10) (2025-04-03)
