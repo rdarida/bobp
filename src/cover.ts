@@ -2,6 +2,11 @@ import { join } from 'path';
 import { CanvasRenderingContext2D, createCanvas } from 'canvas';
 import { createWriteStream } from 'fs';
 
+export type CoverOptions = {
+  title: string;
+  description: string;
+};
+
 type Text = {
   str: string;
   font: string;
@@ -18,10 +23,10 @@ const TITLE_STYLE = `700 80px ${FONT}`;
 const DESC_STYLE = `300 48px ${FONT}`;
 const LINE_GAP = 1.2;
 
-export function cover(
+export function cover({
   title = TEST_TEXT,
   description = `description line1\n${TEST_TEXT}`
-): void {
+}: CoverOptions): void {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
@@ -45,14 +50,14 @@ export function cover(
   sumHeight = Math.ceil(sumHeight);
 
   let offsetY = Math.floor((HEIGHT - sumHeight) * 0.5);
-  console.log(offsetY, sumHeight, 2 * offsetY + sumHeight);
+  // console.log(offsetY, sumHeight, 2 * offsetY + sumHeight);
 
   for (const text of texts) {
     drawText(ctx, text, offsetY);
     offsetY += text.h;
   }
 
-  const output = join(__dirname, '..', 'cover.png');
+  const output = join(process.cwd(), 'cover.png');
   canvas.createPNGStream().pipe(createWriteStream(output));
 }
 
