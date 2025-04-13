@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { CanvasRenderingContext2D, createCanvas } from 'canvas';
-import { createWriteStream } from 'fs';
+import { writeFileSync } from 'fs';
 
 export type CoverOptions = {
   title: string;
@@ -55,7 +55,8 @@ export function cover({ title, description }: CoverOptions): void {
   }
 
   const output = join(process.cwd(), 'cover.png');
-  canvas.createPNGStream().pipe(createWriteStream(output));
+  const buffer = canvas.toBuffer('image/png');
+  writeFileSync(output, buffer);
 }
 
 function drawText(ctx: CanvasRenderingContext2D, text: Text, y: number): void {
