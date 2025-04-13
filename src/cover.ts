@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { CanvasRenderingContext2D, createCanvas } from 'canvas';
-import { createWriteStream } from 'fs';
+import { writeFileSync } from 'fs';
 
 export type CoverOptions = {
   title: string;
@@ -17,16 +17,13 @@ type Text = {
 
 const WIDTH = 1280;
 const HEIGHT = 640;
-const TEST_TEXT = 'TgByAQpjkl';
+// const TEST_TEXT = 'TgByAQpjkl';
 const FONT = '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 const TITLE_STYLE = `700 80px ${FONT}`;
 const DESC_STYLE = `300 48px ${FONT}`;
 const LINE_GAP = 1.2;
 
-export function cover({
-  title = TEST_TEXT,
-  description = `description line1\n${TEST_TEXT}`
-}: CoverOptions): void {
+export function cover({ title, description }: CoverOptions): void {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
@@ -58,7 +55,8 @@ export function cover({
   }
 
   const output = join(process.cwd(), 'cover.png');
-  canvas.createPNGStream().pipe(createWriteStream(output));
+  const buffer = canvas.toBuffer('image/png');
+  writeFileSync(output, buffer);
 }
 
 function drawText(ctx: CanvasRenderingContext2D, text: Text, y: number): void {
