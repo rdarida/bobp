@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/rdarida/bobp/compare/v0.0.16...v0.0.17) (2025-04-15)
+
+
+### Bug Fixes
+
+* use sync file writing in cover function ([90eb5a5](https://github.com/rdarida/bobp/commit/90eb5a59c18629a875a88a1c546aead51c462650))
+
 ### [0.0.16](https://github.com/rdarida/bobp/compare/v0.0.15...v0.0.16) (2025-04-13)
 
 ### [0.0.15](https://github.com/rdarida/bobp/compare/v0.0.14...v0.0.15) (2025-04-13)
