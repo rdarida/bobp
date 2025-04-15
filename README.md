@@ -1,4 +1,4 @@
-<img src="https://repository-images.githubusercontent.com/914766829/40b4fd3b-cedd-417c-9068-3cfc1bb18108" alt="Cover" />
+<img src="https://repository-images.githubusercontent.com/914766829/720dc07a-5802-42cd-98d5-1a89841215cb" alt="Cover" />
 
 <p align="center">
   <a href="https://npmjs.com/package/bobp/" target="_blank" alt="NPM" >
