@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/rdarida/bobp/compare/v0.0.17...v0.0.18) (2025-07-20)
+
+
+### Bug Fixes
+
+* use sonarsqube-scan-action@v5 ([43458a5](https://github.com/rdarida/bobp/commit/43458a5395dd06dac3934c0276c750f84432775a))
+
 ### [0.0.17](https://github.com/rdarida/bobp/compare/v0.0.16...v0.0.17) (2025-04-15)
 
 
