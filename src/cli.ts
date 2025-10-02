@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 import { CoverOptions, LicenseOptions, cover, license, prettier } from '.';
 
-yargs
+yargs(hideBin(process.argv))
   .scriptName('bobp')
   .usage('$0 <cmd> [args]', 'Usage')
   .demandCommand(1, 'Need 1')
