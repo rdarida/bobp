@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://github.com/rdarida/bobp/compare/v0.0.20...v0.0.21) (2025-11-29)
+
+
+### Bug Fixes
+
+* solve Sonar issues ([e5782c5](https://github.com/rdarida/bobp/commit/e5782c56ab1457fe8a4e8c9cdde0b69e835621e3))
+
 ### [0.0.20](https://github.com/rdarida/bobp/compare/v0.0.19...v0.0.20) (2025-10-02)
 
 ### [0.0.19](https://github.com/rdarida/bobp/compare/v0.0.18...v0.0.19) (2025-08-30)
