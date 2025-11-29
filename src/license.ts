@@ -1,5 +1,5 @@
-import { join } from 'path';
-import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
 
 import { TEMP_DIR } from './constants';
 
