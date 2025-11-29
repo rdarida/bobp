@@ -1,6 +1,7 @@
-import { join } from 'path';
+import { join } from 'node:path';
+import { writeFileSync } from 'node:fs';
+
 import { CanvasRenderingContext2D, createCanvas } from 'canvas';
-import { writeFileSync } from 'fs';
 
 export type CoverOptions = {
   title: string;
@@ -17,8 +18,7 @@ type Text = {
 
 const WIDTH = 1280;
 const HEIGHT = 640;
-// const TEST_TEXT = 'TgByAQpjkl';
-const FONT = '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+const FONT = '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'; // use 'TgByAQpjkl' to test
 const TITLE_STYLE = `700 80px ${FONT}`;
 const DESC_STYLE = `300 48px ${FONT}`;
 const LINE_GAP = 1.2;
@@ -47,7 +47,6 @@ export function cover({ title, description }: CoverOptions): void {
   sumHeight = Math.ceil(sumHeight);
 
   let offsetY = Math.floor((HEIGHT - sumHeight) * 0.5);
-  // console.log(offsetY, sumHeight, 2 * offsetY + sumHeight);
 
   for (const text of texts) {
     drawText(ctx, text, offsetY);
