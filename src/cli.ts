@@ -2,7 +2,15 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { CoverOptions, LicenseOptions, cover, license, prettier } from '.';
+import {
+  CoverOptions,
+  LicenseOptions,
+  NextOptions,
+  cover,
+  license,
+  next,
+  prettier
+} from '.';
 
 yargs(hideBin(process.argv))
   .scriptName('bobp')
@@ -31,6 +39,19 @@ yargs(hideBin(process.argv))
     },
     options => license(options)
   )
+  .command<NextOptions>(
+    'next <name>',
+    'next description',
+    yargs => {
+      return yargs
+        .positional('name', {
+          demandOption: true,
+          describe: '',
+          type: 'string'
+        });
+    },
+    async options => await next(options)
+  )
   .command(
     'prettier',
     'prettier description',
@@ -57,4 +78,4 @@ yargs(hideBin(process.argv))
   )
   .help()
   .strict()
-  .parseSync();
+  .parse();
