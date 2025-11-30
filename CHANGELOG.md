@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.22](https://github.com/rdarida/bobp/compare/v0.0.21...v0.0.22) (2025-11-30)
+
+
+### Features
+
+* implement next command ([2dde4c8](https://github.com/rdarida/bobp/commit/2dde4c8b8bb25c27e4c31c882045eb02ee084fc1))
+
 ### [0.0.21](https://github.com/rdarida/bobp/compare/v0.0.20...v0.0.21) (2025-11-29)
 
 
