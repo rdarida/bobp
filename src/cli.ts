@@ -43,12 +43,11 @@ yargs(hideBin(process.argv))
     'next <name>',
     'next description',
     yargs => {
-      return yargs
-        .positional('name', {
-          demandOption: true,
-          describe: '',
-          type: 'string'
-        });
+      return yargs.positional('name', {
+        demandOption: true,
+        describe: '',
+        type: 'string'
+      });
     },
     async options => await next(options)
   )
