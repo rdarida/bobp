@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.24](https://github.com/rdarida/bobp/compare/v0.0.23...v0.0.24) (2025-12-02)
+
+### Bug Fixes
+
+* add host/owner/repository to compare link in CHANGELOG.md ([6480cc3](https://github.com/rdarida/bobp/commit/6480cc32c808f37b4f4eb6bf39ffc2c1e4190c40))
+
 ## [0.0.23](https://github.com/rdarida/bobp/compare/v0.0.22...v0.0.23) (2025-12-02)
 
 ### [0.0.22](https://github.com/rdarida/bobp/compare/v0.0.21...v0.0.22) (2025-11-30)
