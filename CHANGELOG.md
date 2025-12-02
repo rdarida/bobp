@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.0.23](///compare/v0.0.22...v0.0.23) (2025-12-02)
+## [0.0.23](https://github.com/rdarida/bobp/compare/v0.0.22...v0.0.23) (2025-12-02)
 
 ### [0.0.22](https://github.com/rdarida/bobp/compare/v0.0.21...v0.0.22) (2025-11-30)
 
