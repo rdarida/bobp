@@ -2,7 +2,8 @@ module.exports = {
   git: {
     tagName: 'v${version}',
     commitMessage: 'chore: release v${version}',
-    requireCleanWorkingDir: true
+    requireCleanWorkingDir: true,
+    push: false
   },
   npm: {
     publish: false
