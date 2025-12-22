@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 import degit from 'degit';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 export type NextOptions = {
   name: string;
