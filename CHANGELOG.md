@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.0](https://github.com/rdarida/bobp/compare/v0.0.24...v0.1.0) (2025-12-22)
+
+### Features
+
+* implement updatePackageJson for next command ([f09d6c6](https://github.com/rdarida/bobp/commit/f09d6c625134a6bc0f2f87ab49928fff903898fd))
+
 ## [0.0.24](https://github.com/rdarida/bobp/compare/v0.0.23...v0.0.24) (2025-12-02)
 
 ### Bug Fixes
