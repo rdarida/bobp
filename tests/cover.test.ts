@@ -1,5 +1,5 @@
-import { join } from 'path';
-import { existsSync, unlinkSync } from 'fs';
+import { join } from 'node:path';
+import { existsSync, unlinkSync } from 'node:fs';
 
 import { cover } from '../src/cover';
 

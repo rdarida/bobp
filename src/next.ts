@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 
 import degit from 'degit';
 
@@ -19,11 +19,6 @@ async function cloneNextTemplate({ name }: NextOptions): Promise<void> {
 
 function updatePackageJson({ name }: NextOptions): void {
   const packageJsonPath = resolve(process.cwd(), name, 'package.json');
-
-  if (!existsSync(packageJsonPath)) {
-    return;
-  }
-
   const content = readFileSync(packageJsonPath, { encoding: 'utf-8' });
 
   const object = {
