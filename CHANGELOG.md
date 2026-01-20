@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](https://github.com/rdarida/bobp/compare/v0.1.5...v0.2.0) (2026-01-20)
+
+### Features
+
+* implement deleteFiles method for next script ([2b3167c](https://github.com/rdarida/bobp/commit/2b3167cb7c9138a65df09c2393a7a4263c69535a))
+
 ## [0.1.5](https://github.com/rdarida/bobp/compare/v0.1.4...v0.1.5) (2025-12-23)
 
 ## [0.1.4](https://github.com/rdarida/bobp/compare/v0.1.3...v0.1.4) (2025-12-22)
