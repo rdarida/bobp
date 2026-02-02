@@ -36,6 +36,17 @@ you find it useful too, I’m glad it can help!
 npm i -g bobp
 ```
 
+## Commands
+
+### `prettier`
+
+Copies Prettier configuration files into the current working directory.
+
+**Usage:**
+```sh
+npx bobp prettier
+```
+
 <hr>
 
 <details>
