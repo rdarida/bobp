@@ -38,6 +38,15 @@ npm i -g bobp
 
 ## Commands
 
+### `license`
+
+Generates a LICENSE file in the current working directory.
+
+**Usage:**
+```sh
+npx bobp license "John Doe"
+```
+
 ### `prettier`
 
 Copies Prettier configuration files into the current working directory.
