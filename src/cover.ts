@@ -3,8 +3,17 @@ import { writeFileSync } from 'node:fs';
 
 import { CanvasRenderingContext2D, createCanvas } from 'canvas';
 
+/**
+ * Options used to generate a cover image.
+ */
 export type CoverOptions = {
+  /** Main title text displayed on the cover */
   title: string;
+
+  /**
+   * Description text displayed below the title.
+   * New lines (`\n`) are respected and rendered as separate lines.
+   */
   description: string;
 };
 
@@ -23,6 +32,11 @@ const TITLE_STYLE = `700 80px ${FONT}`;
 const DESC_STYLE = `300 48px ${FONT}`;
 const LINE_GAP = 1.2;
 
+/**
+ * Generates a PNG cover image (cover.png) in the current working directory.
+ *
+ * @param options Configuration options for the cover image.
+ */
 export function cover({ title, description }: CoverOptions): void {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
