@@ -38,6 +38,15 @@ npm i -g bobp
 
 ## Commands
 
+### `cover`
+
+Generates a PNG cover image (cover.png) in the current working directory.
+
+**Usage:**
+```sh
+npx bobp cover "Example title" "Description for the Example cover"
+```
+
 ### `license`
 
 Generates a LICENSE file in the current working directory.

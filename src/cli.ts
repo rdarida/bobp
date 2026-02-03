@@ -59,17 +59,17 @@ yargs(hideBin(process.argv))
   )
   .command<CoverOptions>(
     'cover <title> <description>',
-    'cover description',
+    'Generates a PNG cover image (cover.png) in the current working directory',
     yargs => {
       return yargs
         .positional('title', {
           demandOption: true,
-          describe: '',
+          describe: 'Main title text displayed on the cover',
           type: 'string'
         })
         .positional('description', {
           demandOption: true,
-          describe: '',
+          describe: 'Description text displayed below the title',
           type: 'string'
         });
     },
