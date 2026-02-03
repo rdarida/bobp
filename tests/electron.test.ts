@@ -3,14 +3,14 @@ import { existsSync } from 'node:fs';
 
 import { rimrafSync } from 'rimraf';
 
-import { next } from '../src/next';
+import { electron } from '../src/electron';
 
 describe('cover()', () => {
-  const name = 'test-next';
+  const name = 'test-electron';
   const outputPath = join(process.cwd(), name);
 
-  it('should create a Next.js project', async () => {
-    await next({ name });
+  it('should create an Electron project', async () => {
+    await electron({ name });
 
     expect(existsSync(outputPath)).toBe(true);
   });

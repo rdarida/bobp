@@ -47,6 +47,17 @@ Generates a PNG cover image (cover.png) in the current working directory.
 npx bobp cover "Example title" "Description for the Example cover"
 ```
 
+### `electron`
+
+Creates a new Electron project from a
+[predefined template](https://github.com/rdarida/template-electron)
+in the current working directory.
+
+**Usage:**
+```sh
+npx bobp electron "App Name"
+```
+
 ### `license`
 
 Generates a LICENSE file in the current working directory.
