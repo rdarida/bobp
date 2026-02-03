@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2](https://github.com/rdarida/bobp/compare/v0.2.1...v0.2.2) (2026-02-03)
+
+### Bug Fixes
+
+* audit fix ([3693fd1](https://github.com/rdarida/bobp/commit/3693fd137af795fbe040070e5c8fbfbf92c1ea19))
+
 ## [0.2.1](https://github.com/rdarida/bobp/compare/v0.2.0...v0.2.1) (2026-02-02)
 
 ## [0.2.0](https://github.com/rdarida/bobp/compare/v0.1.5...v0.2.0) (2026-01-20)
