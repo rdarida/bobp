@@ -53,7 +53,7 @@ yargs(hideBin(process.argv))
   )
   .command(
     'prettier',
-    'prettier description',
+    'Copies Prettier configuration files into the current working directory',
     yargs => yargs,
     () => prettier()
   )
