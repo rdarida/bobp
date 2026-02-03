@@ -6,7 +6,7 @@ import { rimrafSync } from 'rimraf';
 import { electron } from '../src/electron';
 
 describe('cover()', () => {
-  const name = 'test-electron';
+  const name = 'Electron_App';
   const outputPath = join(process.cwd(), name);
 
   it('should create an Electron project', async () => {

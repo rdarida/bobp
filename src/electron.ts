@@ -1,6 +1,10 @@
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import degit from 'degit';
+import { rimrafSync } from 'rimraf';
+
+import { normalize } from './utils';
 
 /**
  * Options used to generate a new Electron project.
@@ -21,9 +25,32 @@ export async function electron(
   electronOptions: ElectronOptions
 ): Promise<void> {
   await cloneNextTemplate(electronOptions);
+  updatePackageJson(electronOptions);
+  deleteFiles(electronOptions);
 }
 
 async function cloneNextTemplate({ name }: ElectronOptions): Promise<void> {
   const emitter = degit('rdarida/template-electron#main');
   return await emitter.clone(resolve(process.cwd(), name));
+}
+
+function updatePackageJson({ name }: ElectronOptions): void {
+  const packageJsonPath = resolve(process.cwd(), name, 'package.json');
+  const content = readFileSync(packageJsonPath, { encoding: 'utf-8' });
+
+  const object = {
+    ...JSON.parse(content),
+    name: normalize(name),
+    productName: name,
+    version: '0.0.0'
+  };
+
+  writeFileSync(packageJsonPath, JSON.stringify(object, null, 2));
+}
+
+function deleteFiles({ name }: ElectronOptions): void {
+  ['package-lock.json'].forEach(file => {
+    const filePath = resolve(process.cwd(), name, file);
+    rimrafSync(filePath);
+  });
 }
