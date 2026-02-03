@@ -18,22 +18,22 @@ yargs(hideBin(process.argv))
   .demandCommand(1, 'Need 1')
   .command<LicenseOptions>(
     'license <author> [year] [type]',
-    'license description',
+    'Generates a LICENSE file in the current working directory',
     yargs => {
       return yargs
         .positional('author', {
           demandOption: true,
-          describe: '',
+          describe: 'Author or copyright holder name',
           type: 'string'
         })
         .positional('year', {
           default: new Date().getFullYear().toString(),
-          describe: '',
+          describe: 'Year to be inserted into the license text',
           type: 'string'
         })
         .positional('type', {
           default: 'mit',
-          describe: '',
+          describe: 'License type (e.g. "mit")',
           type: 'string'
         });
     },
