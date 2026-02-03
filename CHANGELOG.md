@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/rdarida/bobp/compare/v0.2.4...v0.3.0) (2026-02-03)
+
+### Features
+
+* implement electron command ([1ee78d6](https://github.com/rdarida/bobp/commit/1ee78d669c5541ad71b8ab827b1e42e09dd56322))
+
 ## [0.2.4](https://github.com/rdarida/bobp/compare/v0.2.3...v0.2.4) (2026-02-03)
 
 ## [0.2.3](https://github.com/rdarida/bobp/compare/v0.2.2...v0.2.3) (2026-02-03)
