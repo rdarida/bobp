@@ -11,6 +11,7 @@ import {
   electron,
   license,
   next,
+  normalize,
   prettier
 } from '.';
 
@@ -60,16 +61,24 @@ yargs(hideBin(process.argv))
     options => license(options)
   )
   .command<ElectronOptions>(
-    'electron <name>',
+    'electron <productName> [name]',
     'Creates a new Electron project in the current working directory',
     yargs => {
-      return yargs.positional('name', {
-        demandOption: true,
-        describe: 'Name of the application',
-        type: 'string'
-      });
+      return yargs
+        .positional('productName', {
+          demandOption: true,
+          describe: 'Name of the application',
+          type: 'string'
+        })
+        .positional('name', {
+          describe: 'Name of the project directory and npm package',
+          type: 'string'
+        });
     },
-    async options => await electron(options)
+    async ({ productName, name }) => {
+      name = name || normalize(productName);
+      await electron({ name, productName });
+    }
   )
   .command<NextOptions>(
     'next <name>',

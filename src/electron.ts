@@ -4,14 +4,15 @@ import { resolve } from 'node:path';
 import degit from 'degit';
 import { rimrafSync } from 'rimraf';
 
-import { normalize } from './utils';
-
 /**
  * Options used to generate a new Electron project.
  */
 export type ElectronOptions = {
-  /** Name of the application */
+  /** Name of the project directory and npm package */
   name: string;
+
+  /** Name of the application */
+  productName: string;
 };
 
 /**
@@ -34,14 +35,14 @@ async function cloneNextTemplate({ name }: ElectronOptions): Promise<void> {
   return await emitter.clone(resolve(process.cwd(), name));
 }
 
-function updatePackageJson({ name }: ElectronOptions): void {
+function updatePackageJson({ name, productName }: ElectronOptions): void {
   const packageJsonPath = resolve(process.cwd(), name, 'package.json');
   const content = readFileSync(packageJsonPath, { encoding: 'utf-8' });
 
   const object = {
     ...JSON.parse(content),
-    name: normalize(name),
-    productName: name,
+    name,
+    productName,
     version: '0.0.0'
   };
 
