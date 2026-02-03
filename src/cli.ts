@@ -41,11 +41,11 @@ yargs(hideBin(process.argv))
   )
   .command<NextOptions>(
     'next <name>',
-    'next description',
+    'Creates a new Next.js project in the current working directory',
     yargs => {
       return yargs.positional('name', {
         demandOption: true,
-        describe: '',
+        describe: 'Name of the project directory and npm package',
         type: 'string'
       });
     },

@@ -4,10 +4,21 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import degit from 'degit';
 import { rimrafSync } from 'rimraf';
 
+/**
+ * Options used to generate a new Next.js project.
+ */
 export type NextOptions = {
+  /** Name of the project directory and npm package */
   name: string;
 };
 
+/**
+ * Creates a new Next.js project from a
+ * [predefined template](https://github.com/rdarida/template-next)
+ * in the current working directory.
+ *
+ * @param options Configuration options for the Next.js project.
+ */
 export async function next(nextOptions: NextOptions): Promise<void> {
   await cloneNextTemplate(nextOptions);
   updatePackageJson(nextOptions);

@@ -56,6 +56,17 @@ Generates a LICENSE file in the current working directory.
 npx bobp license "John Doe"
 ```
 
+### `next`
+
+Creates a new Next.js project from a
+[predefined template](https://github.com/rdarida/template-next)
+in the current working directory.
+
+**Usage:**
+```sh
+npx bobp next "example-next-project"
+```
+
 ### `prettier`
 
 Copies Prettier configuration files into the current working directory.
