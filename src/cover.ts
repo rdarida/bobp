@@ -17,8 +17,8 @@ export type CoverOptions = {
   description: string;
 
   /**
-   * Output file path for the generated cover image
-   * (default: 'cover.png' in the current working directory)
+   * Output path for the generated cover.png
+   * (default: the current working directory)
    */
   path: string;
 };

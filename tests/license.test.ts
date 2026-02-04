@@ -13,7 +13,8 @@ describe('Test license function', () => {
     const options: LicenseOptions = {
       type: 'MIT',
       year: '2025',
-      author: 'John Doe'
+      author: 'John Doe',
+      path: process.cwd()
     };
 
     mockReadFileSync.mockReturnValue('Copyright (c) [year] [author]');
