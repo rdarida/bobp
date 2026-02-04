@@ -13,7 +13,7 @@ describe('prettier', () => {
     const files = ['prettierrc', 'prettierignore'];
     mockReaddirSync.mockReturnValue(files);
 
-    prettier();
+    prettier({ path: process.cwd() });
 
     for (const fileName of files) {
       const src = join(__dirname, '..', 'templates', 'prettier', fileName);
