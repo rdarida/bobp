@@ -103,10 +103,16 @@ yargs(hideBin(process.argv))
     async options => await next(options)
   )
   .command(
-    'prettier',
+    'prettier [path]',
     'Copies Prettier configuration files into the current working directory',
-    yargs => yargs,
-    () => prettier()
+    yargs => {
+      return yargs.positional('path', {
+        default: process.cwd(),
+        describe: 'Output path for the generated Prettier configuration files',
+        type: 'string'
+      });
+    },
+    options => prettier(options)
   )
   .help()
   .strict()
