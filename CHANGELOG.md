@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/rdarida/bobp/compare/v0.3.0...v0.4.0) (2026-02-04)
+
+### Features
+
+* implement electron command ([59dafaf](https://github.com/rdarida/bobp/commit/59dafaf69bb075b0998ecf48ffefdbef47aa7e97))
+* update electron project's package.json ([91983c2](https://github.com/rdarida/bobp/commit/91983c28fcac91c3c37e34c2fa5f9897e870a0c9))
+
 ## [0.3.0](https://github.com/rdarida/bobp/compare/v0.2.4...v0.3.0) (2026-02-03)
 
 ### Features
