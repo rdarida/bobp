@@ -20,7 +20,7 @@ yargs(hideBin(process.argv))
   .usage('$0 <cmd> [args]', 'Usage')
   .demandCommand(1, 'Need 1')
   .command<CoverOptions>(
-    'cover <title> <description>',
+    'cover <title> <description> [path]',
     'Generates a PNG cover image (cover.png) in the current working directory',
     yargs => {
       return yargs
@@ -32,6 +32,11 @@ yargs(hideBin(process.argv))
         .positional('description', {
           demandOption: true,
           describe: 'Description text displayed below the title',
+          type: 'string'
+        })
+        .positional('path', {
+          default: process.cwd(),
+          describe: 'Output file path for the generated cover image',
           type: 'string'
         });
     },
