@@ -1,5 +1,5 @@
-import { join } from 'node:path';
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { rimrafSync } from 'rimraf';
 
@@ -12,7 +12,7 @@ describe('cover()', () => {
   const outputPath = join(process.cwd(), name);
 
   it('should create an Electron project', async () => {
-    await electron({ name, productName });
+    await electron({ name, productName, path: process.cwd() });
 
     expect(existsSync(outputPath)).toBe(true);
   });

@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { join } from 'node:path';
 
 import degit from 'degit';
 import { rimrafSync } from 'rimraf';
@@ -13,6 +13,12 @@ export type ElectronOptions = {
 
   /** Name of the application */
   productName: string;
+
+  /**
+   * Output path for the generated Electron project
+   * (default: the current working directory)
+   */
+  path: string;
 };
 
 /**
@@ -30,13 +36,16 @@ export async function electron(
   deleteFiles(electronOptions);
 }
 
-async function cloneNextTemplate({ name }: ElectronOptions): Promise<void> {
+async function cloneNextTemplate({
+  name,
+  path
+}: ElectronOptions): Promise<void> {
   const emitter = degit('rdarida/template-electron#main');
-  return await emitter.clone(resolve(process.cwd(), name));
+  return await emitter.clone(join(path, name));
 }
 
-function updatePackageJson({ name, productName }: ElectronOptions): void {
-  const packageJsonPath = resolve(process.cwd(), name, 'package.json');
+function updatePackageJson({ name, productName, path }: ElectronOptions): void {
+  const packageJsonPath = join(path, name, 'package.json');
   const content = readFileSync(packageJsonPath, { encoding: 'utf-8' });
 
   const object = {
@@ -49,9 +58,9 @@ function updatePackageJson({ name, productName }: ElectronOptions): void {
   writeFileSync(packageJsonPath, JSON.stringify(object, null, 2));
 }
 
-function deleteFiles({ name }: ElectronOptions): void {
+function deleteFiles({ name, path }: ElectronOptions): void {
   ['package-lock.json'].forEach(file => {
-    const filePath = resolve(process.cwd(), name, file);
+    const filePath = join(path, name, file);
     rimrafSync(filePath);
   });
 }
