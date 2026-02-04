@@ -9,7 +9,8 @@ describe('cover()', () => {
   it('should create a non-empty cover.png file', () => {
     cover({
       title: 'Test Title',
-      description: 'Line 1\nLine 2'
+      description: 'Line 1\nLine 2',
+      path: process.cwd()
     });
 
     expect(existsSync(outputPath)).toBe(true);

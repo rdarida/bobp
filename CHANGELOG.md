@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0](https://github.com/rdarida/bobp/compare/v0.4.0...v0.5.0) (2026-02-04)
+
+### Features
+
+* add path property to cover command ([53d3a9d](https://github.com/rdarida/bobp/commit/53d3a9d0608f8999ce0868b0135a60b0b9603b9d))
+
 ## [0.4.0](https://github.com/rdarida/bobp/compare/v0.3.0...v0.4.0) (2026-02-04)
 
 ### Features

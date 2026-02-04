@@ -15,6 +15,12 @@ export type CoverOptions = {
    * New lines (`\n`) are respected and rendered as separate lines.
    */
   description: string;
+
+  /**
+   * Output file path for the generated cover image
+   * (default: 'cover.png' in the current working directory)
+   */
+  path: string;
 };
 
 type Text = {
@@ -37,7 +43,7 @@ const LINE_GAP = 1.2;
  *
  * @param options Configuration options for the cover image.
  */
-export function cover({ title, description }: CoverOptions): void {
+export function cover({ title, description, path }: CoverOptions): void {
   const canvas = createCanvas(WIDTH, HEIGHT);
   const { width, height } = canvas;
   const ctx = canvas.getContext('2d');
@@ -67,7 +73,7 @@ export function cover({ title, description }: CoverOptions): void {
     offsetY += text.h;
   }
 
-  const output = join(process.cwd(), 'cover.png');
+  const output = join(path, 'cover.png');
   const buffer = canvas.toBuffer('image/png');
   writeFileSync(output, buffer);
 }
