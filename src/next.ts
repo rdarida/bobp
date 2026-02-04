@@ -1,5 +1,5 @@
-import { resolve } from 'node:path';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import degit from 'degit';
 import { rimrafSync } from 'rimraf';
@@ -10,6 +10,12 @@ import { rimrafSync } from 'rimraf';
 export type NextOptions = {
   /** Name of the project directory and npm package */
   name: string;
+
+  /**
+   * Output path for the generated Next.js project
+   * (default: the current working directory)
+   */
+  path: string;
 };
 
 /**
@@ -25,13 +31,13 @@ export async function next(nextOptions: NextOptions): Promise<void> {
   deleteFiles(nextOptions);
 }
 
-async function cloneNextTemplate({ name }: NextOptions): Promise<void> {
+async function cloneNextTemplate({ name, path }: NextOptions): Promise<void> {
   const emitter = degit('rdarida/template-next#main');
-  return await emitter.clone(resolve(process.cwd(), name));
+  return await emitter.clone(join(path, name));
 }
 
-function updatePackageJson({ name }: NextOptions): void {
-  const packageJsonPath = resolve(process.cwd(), name, 'package.json');
+function updatePackageJson({ name, path }: NextOptions): void {
+  const packageJsonPath = join(path, name, 'package.json');
   const content = readFileSync(packageJsonPath, { encoding: 'utf-8' });
 
   const object = {
@@ -43,9 +49,9 @@ function updatePackageJson({ name }: NextOptions): void {
   writeFileSync(packageJsonPath, JSON.stringify(object, null, 2));
 }
 
-function deleteFiles({ name }: NextOptions): void {
+function deleteFiles({ name, path }: NextOptions): void {
   ['package-lock.json'].forEach(file => {
-    const filePath = resolve(process.cwd(), name, file);
+    const filePath = join(path, name, file);
     rimrafSync(filePath);
   });
 }

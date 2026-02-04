@@ -91,14 +91,20 @@ yargs(hideBin(process.argv))
     }
   )
   .command<NextOptions>(
-    'next <name>',
+    'next <name> [path]',
     'Creates a new Next.js project in the current working directory',
     yargs => {
-      return yargs.positional('name', {
-        demandOption: true,
-        describe: 'Name of the project directory and npm package',
-        type: 'string'
-      });
+      return yargs
+        .positional('name', {
+          demandOption: true,
+          describe: 'Name of the project directory and npm package',
+          type: 'string'
+        })
+        .positional('path', {
+          default: process.cwd(),
+          describe: 'Output path for the generated Next.js project',
+          type: 'string'
+        });
     },
     async options => await next(options)
   )
