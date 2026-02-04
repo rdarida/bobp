@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0](https://github.com/rdarida/bobp/compare/v0.6.0...v0.7.0) (2026-02-04)
+
+### Features
+
+* add path parameter for prettier command ([b5e9ff9](https://github.com/rdarida/bobp/commit/b5e9ff9a71469b41f955a513af607715c90c359d))
+
 ## [0.6.0](https://github.com/rdarida/bobp/compare/v0.5.0...v0.6.0) (2026-02-04)
 
 ### Features
