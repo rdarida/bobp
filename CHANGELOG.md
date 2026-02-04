@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/rdarida/bobp/compare/v0.5.0...v0.6.0) (2026-02-04)
+
+### Features
+
+* add path property to license command ([de863a0](https://github.com/rdarida/bobp/commit/de863a081da5afddeefbea5245e0732c11fe9097))
+
 ## [0.5.0](https://github.com/rdarida/bobp/compare/v0.4.0...v0.5.0) (2026-02-04)
 
 ### Features
