@@ -71,7 +71,7 @@ yargs(hideBin(process.argv))
     options => license(options)
   )
   .command<ElectronOptions>(
-    'electron <productName> [name]',
+    'electron <productName> [name] [path]',
     'Creates a new Electron project in the current working directory',
     yargs => {
       return yargs
@@ -83,11 +83,16 @@ yargs(hideBin(process.argv))
         .positional('name', {
           describe: 'Name of the project directory and npm package',
           type: 'string'
+        })
+        .positional('path', {
+          default: process.cwd(),
+          describe: 'Output path for the generated Electron project',
+          type: 'string'
         });
     },
-    async ({ productName, name }) => {
+    async ({ productName, name, path }) => {
       name = name || normalize(productName);
-      await electron({ name, productName });
+      await electron({ name, productName, path });
     }
   )
   .command<NextOptions>(

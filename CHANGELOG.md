@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.0](https://github.com/rdarida/bobp/compare/v0.8.0...v0.9.0) (2026-02-04)
+
+### Features
+
+* add path parameter for electron command ([0afc056](https://github.com/rdarida/bobp/commit/0afc056e22b026e84e93e97915c8a92a7efe2c12))
+
 ## [0.8.0](https://github.com/rdarida/bobp/compare/v0.7.0...v0.8.0) (2026-02-04)
 
 ### Features
