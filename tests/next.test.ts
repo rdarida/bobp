@@ -1,5 +1,5 @@
-import { join } from 'node:path';
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { rimrafSync } from 'rimraf';
 
@@ -10,7 +10,7 @@ describe('cover()', () => {
   const outputPath = join(process.cwd(), name);
 
   it('should create a Next.js project', async () => {
-    await next({ name });
+    await next({ name, path: process.cwd() });
 
     expect(existsSync(outputPath)).toBe(true);
   });
