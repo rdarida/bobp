@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0](https://github.com/rdarida/bobp/compare/v0.7.0...v0.8.0) (2026-02-04)
+
+### Features
+
+* add path param for next command ([5f61b03](https://github.com/rdarida/bobp/commit/5f61b03347ec7eda783518e027b03a0d1972f122))
+
 ## [0.7.0](https://github.com/rdarida/bobp/compare/v0.6.0...v0.7.0) (2026-02-04)
 
 ### Features
