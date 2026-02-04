@@ -21,6 +21,12 @@ export type LicenseOptions = {
 
   /** Author or copyright holder name */
   author: string;
+
+  /**
+   * Output path for the generated LICENSE file
+   * (default: the current working directory)
+   */
+  path: string;
 };
 
 /**
@@ -28,11 +34,11 @@ export type LicenseOptions = {
  *
  * @param options Configuration options for the license generation.
  */
-export function license({ type, year, author }: LicenseOptions): void {
+export function license({ type, year, author, path }: LicenseOptions): void {
   const fileName = `${type}.txt`;
   const filePath = join(LICENSE_DIR, fileName);
   const template = readFileSync(filePath, { encoding: 'utf-8' });
   const content = template.replace('[year]', year).replace('[author]', author);
-  const destination = join(process.cwd(), 'LICENSE');
+  const destination = join(path, 'LICENSE');
   writeFileSync(destination, content);
 }

@@ -36,14 +36,14 @@ yargs(hideBin(process.argv))
         })
         .positional('path', {
           default: process.cwd(),
-          describe: 'Output file path for the generated cover image',
+          describe: 'Output path for the generated cover image',
           type: 'string'
         });
     },
     options => cover(options)
   )
   .command<LicenseOptions>(
-    'license <author> [year] [type]',
+    'license <author> [year] [type] [path]',
     'Generates a LICENSE file in the current working directory',
     yargs => {
       return yargs
@@ -60,6 +60,11 @@ yargs(hideBin(process.argv))
         .positional('type', {
           default: 'mit',
           describe: 'License type (e.g. "mit")',
+          type: 'string'
+        })
+        .positional('path', {
+          default: process.cwd(),
+          describe: 'Output path for the generated LICENSE file',
           type: 'string'
         });
     },
