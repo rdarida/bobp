@@ -7,6 +7,7 @@ import {
   ElectronOptions,
   LicenseOptions,
   NextOptions,
+  PrettierOptions,
   cover,
   electron,
   license,
@@ -20,74 +21,74 @@ yargs(hideBin(process.argv))
   .usage('$0 <cmd> [args]', 'Usage')
   .demandCommand(1, 'Need 1')
   .command<CoverOptions>(
-    'cover <title> <description> [path]',
+    'cover <title> <description>',
     'Generates a PNG cover image (cover.png) in the current working directory',
     yargs => {
       return yargs
         .positional('title', {
-          demandOption: true,
+          type: 'string',
           describe: 'Main title text displayed on the cover',
-          type: 'string'
+          demandOption: true
         })
         .positional('description', {
-          demandOption: true,
+          type: 'string',
           describe: 'Description text displayed below the title',
-          type: 'string'
+          demandOption: true
         })
-        .positional('path', {
-          default: process.cwd(),
+        .option('path', {
+          type: 'string',
           describe: 'Output path for the generated cover image',
-          type: 'string'
+          default: process.cwd()
         });
     },
     options => cover(options)
   )
   .command<LicenseOptions>(
-    'license <author> [year] [type] [path]',
+    'license <author> [year] [type]',
     'Generates a LICENSE file in the current working directory',
     yargs => {
       return yargs
         .positional('author', {
-          demandOption: true,
+          type: 'string',
           describe: 'Author or copyright holder name',
-          type: 'string'
+          demandOption: true
         })
         .positional('year', {
-          default: new Date().getFullYear().toString(),
+          type: 'string',
           describe: 'Year to be inserted into the license text',
-          type: 'string'
+          default: new Date().getFullYear().toString()
         })
         .positional('type', {
-          default: 'mit',
+          type: 'string',
           describe: 'License type (e.g. "mit")',
-          type: 'string'
+          default: 'mit'
         })
-        .positional('path', {
-          default: process.cwd(),
+        .option('path', {
+          type: 'string',
           describe: 'Output path for the generated LICENSE file',
-          type: 'string'
+          default: process.cwd()
         });
     },
     options => license(options)
   )
   .command<ElectronOptions>(
-    'electron <productName> [name] [path]',
+    'electron <productName> [name]',
     'Creates a new Electron project in the current working directory',
     yargs => {
       return yargs
         .positional('productName', {
-          demandOption: true,
+          type: 'string',
           describe: 'Name of the application',
-          type: 'string'
+          demandOption: true
         })
         .positional('name', {
-          describe: 'Name of the project directory and npm package',
-          type: 'string'
+          type: 'string',
+          describe: 'Name of the project directory and npm package'
         })
-        .positional('path', {
-          default: process.cwd(),
+        .option('path', {
+          type: 'string',
           describe: 'Output path for the generated Electron project',
-          type: 'string'
+          default: process.cwd()
         });
     },
     async ({ productName, name, path }) => {
@@ -96,31 +97,31 @@ yargs(hideBin(process.argv))
     }
   )
   .command<NextOptions>(
-    'next <name> [path]',
+    'next <name>',
     'Creates a new Next.js project in the current working directory',
     yargs => {
       return yargs
         .positional('name', {
-          demandOption: true,
+          type: 'string',
           describe: 'Name of the project directory and npm package',
-          type: 'string'
+          demandOption: true
         })
-        .positional('path', {
-          default: process.cwd(),
+        .option('path', {
+          type: 'string',
           describe: 'Output path for the generated Next.js project',
-          type: 'string'
+          default: process.cwd()
         });
     },
     async options => await next(options)
   )
-  .command(
-    'prettier [path]',
+  .command<PrettierOptions>(
+    'prettier',
     'Copies Prettier configuration files into the current working directory',
     yargs => {
-      return yargs.positional('path', {
-        default: process.cwd(),
+      return yargs.option('path', {
+        type: 'string',
         describe: 'Output path for the generated Prettier configuration files',
-        type: 'string'
+        default: process.cwd()
       });
     },
     options => prettier(options)
