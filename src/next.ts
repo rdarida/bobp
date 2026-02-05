@@ -27,13 +27,20 @@ export type NextOptions = {
  */
 export async function next(nextOptions: NextOptions): Promise<void> {
   await cloneNextTemplate(nextOptions);
-  updatePackageJson(nextOptions);
   deleteFiles(nextOptions);
+  updatePackageJson(nextOptions);
 }
 
 async function cloneNextTemplate({ name, path }: NextOptions): Promise<void> {
   const emitter = degit('rdarida/template-next#main');
   return await emitter.clone(join(path, name));
+}
+
+function deleteFiles({ name, path }: NextOptions): void {
+  ['package-lock.json'].forEach(file => {
+    const filePath = join(path, name, file);
+    rimrafSync(filePath);
+  });
 }
 
 function updatePackageJson({ name, path }: NextOptions): void {
@@ -47,11 +54,4 @@ function updatePackageJson({ name, path }: NextOptions): void {
   };
 
   writeFileSync(packageJsonPath, JSON.stringify(object, null, 2));
-}
-
-function deleteFiles({ name, path }: NextOptions): void {
-  ['package-lock.json'].forEach(file => {
-    const filePath = join(path, name, file);
-    rimrafSync(filePath);
-  });
 }
