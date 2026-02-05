@@ -1,24 +1,20 @@
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { existsSync, unlinkSync } from 'node:fs';
 
 import { cover } from '../src/cover';
 
-describe('cover()', () => {
-  const outputPath = join(process.cwd(), 'cover.png');
+import { TEST_TEMP_DIR } from './constants';
 
+describe('cover()', () => {
   it('should create a non-empty cover.png file', () => {
+    const outputPath = join(TEST_TEMP_DIR, 'cover.png');
+
     cover({
       title: 'Test Title',
       description: 'Line 1\nLine 2',
-      path: process.cwd()
+      path: TEST_TEMP_DIR
     });
 
     expect(existsSync(outputPath)).toBe(true);
-  });
-
-  afterEach(() => {
-    if (existsSync(outputPath)) {
-      unlinkSync(outputPath);
-    }
   });
 });
