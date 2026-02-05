@@ -6,6 +6,8 @@ module.exports = async () => {
     transform: {
       '^.+\\.(ts|tsx)$': 'ts-jest'
     },
+    globalSetup: './tests/globalSetup.ts',
+    globalTeardown: './tests/globalTeardown.ts',
     collectCoverage: false, // npm test -- --collectCoverage
     collectCoverageFrom: ['./src/**/*.ts'],
     coveragePathIgnorePatterns: [
