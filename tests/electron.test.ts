@@ -6,7 +6,7 @@ import { rimrafSync } from 'rimraf';
 import { normalize } from '../src/utils';
 import { electron } from '../src/electron';
 
-describe('cover()', () => {
+describe('Test electron function', () => {
   const productName = 'Electron App';
   const name = normalize(productName);
   const outputPath = join(process.cwd(), name);

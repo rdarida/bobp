@@ -5,7 +5,7 @@ import { cover } from '../src/cover';
 
 import { TEST_TEMP_DIR } from './constants';
 
-describe('cover()', () => {
+describe('Test cover function', () => {
   it('should create a non-empty cover.png file', () => {
     const outputPath = join(TEST_TEMP_DIR, 'cover.png');
 

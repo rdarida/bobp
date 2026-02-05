@@ -1,21 +1,17 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { rimrafSync } from 'rimraf';
-
 import { next } from '../src/next';
 
-describe('cover()', () => {
-  const name = 'test-next';
-  const outputPath = join(process.cwd(), name);
+import { TEST_TEMP_DIR } from './constants';
 
+describe('Test next function', () => {
   it('should create a Next.js project', async () => {
-    await next({ name, path: process.cwd() });
+    const name = 'test-next';
+    const outputPath = join(TEST_TEMP_DIR, name);
+
+    await next({ name, path: TEST_TEMP_DIR });
 
     expect(existsSync(outputPath)).toBe(true);
-  });
-
-  afterEach(() => {
-    rimrafSync(outputPath);
   });
 });
