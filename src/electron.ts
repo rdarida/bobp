@@ -32,8 +32,8 @@ export async function electron(
   electronOptions: ElectronOptions
 ): Promise<void> {
   await cloneNextTemplate(electronOptions);
-  updatePackageJson(electronOptions);
   deleteFiles(electronOptions);
+  updatePackageJson(electronOptions);
 }
 
 async function cloneNextTemplate({
@@ -42,6 +42,13 @@ async function cloneNextTemplate({
 }: ElectronOptions): Promise<void> {
   const emitter = degit('rdarida/template-electron#main');
   return await emitter.clone(join(path, name));
+}
+
+function deleteFiles({ name, path }: ElectronOptions): void {
+  ['package-lock.json'].forEach(file => {
+    const filePath = join(path, name, file);
+    rimrafSync(filePath);
+  });
 }
 
 function updatePackageJson({ name, productName, path }: ElectronOptions): void {
@@ -56,11 +63,4 @@ function updatePackageJson({ name, productName, path }: ElectronOptions): void {
   };
 
   writeFileSync(packageJsonPath, JSON.stringify(object, null, 2));
-}
-
-function deleteFiles({ name, path }: ElectronOptions): void {
-  ['package-lock.json'].forEach(file => {
-    const filePath = join(path, name, file);
-    rimrafSync(filePath);
-  });
 }

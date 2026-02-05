@@ -1,13 +1,13 @@
-import { join } from 'node:path';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
-import { TEMP_DIR } from './constants';
+import { TEMPLATES_DIR } from './constants';
 
 /**
  * Absolute path to the license template directory.
  * This directory contains license text templates.
  */
-const LICENSE_DIR = join(TEMP_DIR, 'license');
+const LICENSE_DIR = join(TEMPLATES_DIR, 'license');
 
 /**
  * Options used to generate a LICENSE file.

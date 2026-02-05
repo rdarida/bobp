@@ -1,13 +1,13 @@
-import { join } from 'node:path';
 import { copyFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
-import { TEMP_DIR } from './constants';
+import { TEMPLATES_DIR } from './constants';
 
 /**
  * Absolute path to the Prettier configuration directory.
  * This directory contains Prettier-related configuration files.
  */
-const PRETTIER_DIR = join(TEMP_DIR, 'prettier');
+const PRETTIER_DIR = join(TEMPLATES_DIR, 'prettier');
 
 export type PrettierOptions = {
   /**
