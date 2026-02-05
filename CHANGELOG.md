@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.0](https://github.com/rdarida/bobp/compare/v0.9.1...v0.10.0) (2026-02-05)
+
+### Features
+
+* configure globalSetup and globalTeardown functions for Jest ([67f7d2f](https://github.com/rdarida/bobp/commit/67f7d2fe9fd4c54d21dc122c5f39edea1196ca2e))
+
 ## [0.9.1](https://github.com/rdarida/bobp/compare/v0.9.0...v0.9.1) (2026-02-05)
 
 ## [0.9.0](https://github.com/rdarida/bobp/compare/v0.8.0...v0.9.0) (2026-02-04)
