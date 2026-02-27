@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.1](https://github.com/rdarida/bobp/compare/v0.10.0...v0.10.1) (2026-02-27)
+
+### Bug Fixes
+
+* upgrade vulnerable packages ([b8a6ce3](https://github.com/rdarida/bobp/commit/b8a6ce3c26093563d4b6f09618401f376913270f))
+
 ## [0.10.0](https://github.com/rdarida/bobp/compare/v0.9.1...v0.10.0) (2026-02-05)
 
 ### Features
