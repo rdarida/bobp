@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.10.2](https://github.com/rdarida/bobp/compare/v0.10.1...v0.10.2) (2026-03-17)
+
+### Bug Fixes
+
+* **security:** upgrade undici to 6.24.1 to fix CVE-2026-1528 ([fbb34db](https://github.com/rdarida/bobp/commit/fbb34db0aa9ce6faa125a765563fe01fc5569ea6))
+
 ## [0.10.1](https://github.com/rdarida/bobp/compare/v0.10.0...v0.10.1) (2026-02-27)
 
 ### Bug Fixes
