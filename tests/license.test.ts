@@ -5,7 +5,7 @@ import { LicenseOptions, license } from '../src/license';
 
 import { TEST_TEMP_DIR } from './constants';
 
-jest.mock('fs');
+jest.mock('node:fs');
 
 describe('Test license function', () => {
   const mockReadFileSync = fs.readFileSync as jest.Mock;

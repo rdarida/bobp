@@ -5,7 +5,7 @@ import { prettier } from '../src/prettier';
 
 import { TEST_TEMP_DIR } from './constants';
 
-jest.mock('fs');
+jest.mock('node:fs');
 
 describe('Test prettier function', () => {
   const mockReaddirSync = fs.readdirSync as jest.Mock;
