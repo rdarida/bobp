@@ -1,6 +1,6 @@
 {
   "name": "bobp",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "description": "How can I help you, Bobp?",
   "keywords": [],
   "license": "MIT",
@@ -26,7 +26,7 @@
     "pretest": "rimraf ./coverage",
     "test": "jest",
     "prebuild": "rimraf ./dist",
-    "build": "tsup ./src/index.ts ./src/cli.ts --format cjs --dts --clean --minify --shims --sourcemap",
+    "build": "tsup ./src/index.ts ./src/cli.ts --format cjs --clean --dts --shims --sourcemap --minify",
     "prepublishOnly": "npm run build",
     "release": "release-it",
     "predocs": "rimraf ./docs",
