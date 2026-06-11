@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "canvas": "^3.1.0",
-    "degit": "^2.8.4",
+    "degit": "^3.4.7",
     "rimraf": "^6.1.2",
     "yargs": "^18.0.0"
   },
