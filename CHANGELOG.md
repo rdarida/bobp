@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.10.12](https://github.com/rdarida/bobp/compare/v0.10.11...v0.10.12) (2026-06-11)
+
 ## [0.10.11](https://github.com/rdarida/bobp/compare/v0.10.10...v0.10.11) (2026-06-11)
 
 ## [0.10.10](https://github.com/rdarida/bobp/compare/v0.10.9...v0.10.10) (2026-06-11)
