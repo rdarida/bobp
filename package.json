@@ -1,6 +1,6 @@
 {
   "name": "bobp",
-  "version": "0.10.10",
+  "version": "0.10.11",
   "description": "How can I help you, Bobp?",
   "keywords": [],
   "license": "MIT",
@@ -51,6 +51,6 @@
     "ts-jest": "^29.4.6",
     "tsup": "^8.5.1",
     "typedoc": "^0.28.1",
-    "typescript": "^5.8.2"
+    "typescript": "^6.0.3"
   }
 }
