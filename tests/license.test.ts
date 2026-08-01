@@ -1,15 +1,22 @@
 import * as fs from 'node:fs';
 import { join } from 'node:path';
 
+import { afterEach, describe, it, expect, vi } from 'vitest';
+
 import { LicenseOptions, license } from '../src/license';
 
 import { TEST_TEMP_DIR } from './constants';
 
-jest.mock('node:fs');
+vi.mock('node:fs', () => {
+  return {
+    readFileSync: vi.fn(),
+    writeFileSync: vi.fn(),
+  };
+});
 
 describe('Test license function', () => {
-  const mockReadFileSync = fs.readFileSync as jest.Mock;
-  const mockWriteFileSync = fs.writeFileSync as jest.Mock;
+  const mockReadFileSync = vi.mocked(fs.readFileSync);
+  const mockWriteFileSync = vi.mocked(fs.writeFileSync);
 
   it('should generate a LICENSE file', () => {
     const options: LicenseOptions = {
@@ -19,7 +26,7 @@ describe('Test license function', () => {
       path: TEST_TEMP_DIR
     };
 
-    mockReadFileSync.mockReturnValue('Copyright (c) [year] [author]');
+    mockReadFileSync.mockReturnValue('Copyright (c) [year] [author]' as any);
 
     license(options);
 
@@ -33,6 +40,6 @@ describe('Test license function', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 });

@@ -1,6 +1,8 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { describe, expect, it } from 'vitest';
+
 import { next } from '../src/next';
 
 import { TEST_TEMP_DIR } from './constants';
