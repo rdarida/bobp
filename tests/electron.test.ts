@@ -1,6 +1,8 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { describe, expect, it } from 'vitest';
+
 import { normalize } from '../src/utils';
 import { electron } from '../src/electron';
 

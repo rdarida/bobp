@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { cover, license, next, prettier } from '../src/index';
 
 describe('Test exports', () => {

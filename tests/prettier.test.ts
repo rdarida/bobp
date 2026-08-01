@@ -1,19 +1,26 @@
 import * as fs from 'node:fs';
 import { join } from 'node:path';
 
+import { afterEach, describe, it, expect, vi } from 'vitest';
+
 import { prettier } from '../src/prettier';
 
 import { TEST_TEMP_DIR } from './constants';
 
-jest.mock('node:fs');
+vi.mock('node:fs', () => {
+  return {
+    readdirSync: vi.fn(),
+    copyFileSync: vi.fn(),
+  };
+});
 
 describe('Test prettier function', () => {
-  const mockReaddirSync = fs.readdirSync as jest.Mock;
-  const mockCopyFileSync = fs.copyFileSync as jest.Mock;
+  const mockReaddirSync = vi.mocked(fs.readdirSync);
+  const mockCopyFileSync = vi.mocked(fs.copyFileSync);
 
   it('copies prettier files to root', () => {
     const files = ['prettierrc', 'prettierignore'];
-    mockReaddirSync.mockReturnValue(files);
+    mockReaddirSync.mockReturnValue(files as any);
 
     prettier({ path: TEST_TEMP_DIR });
 
@@ -28,6 +35,6 @@ describe('Test prettier function', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 });
