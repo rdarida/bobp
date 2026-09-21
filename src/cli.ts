@@ -69,7 +69,7 @@ yargs(hideBin(process.argv))
           default: process.cwd()
         });
     },
-    options => license(options)
+    async options => await license(options)
   )
   .command<ElectronOptions>(
     'electron <productName> [name]',
