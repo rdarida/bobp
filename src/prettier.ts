@@ -15,5 +15,6 @@ export async function prettier({ path }: PrettierOptions): Promise<void> {
   const emitter = degit(
     'https://gist.github.com/rdarida/d087f8bbf55735a85a36967c20409678'
   );
+
   return emitter.clone(path);
 }

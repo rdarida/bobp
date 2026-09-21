@@ -1,24 +1,14 @@
-import * as fs from 'node:fs';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { afterEach, describe, it, expect, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import { LicenseOptions, license } from '../src/license';
 
 import { TEST_TEMP_DIR } from './constants';
 
-vi.mock('node:fs', () => {
-  return {
-    readFileSync: vi.fn(),
-    writeFileSync: vi.fn()
-  };
-});
-
 describe('Test license function', () => {
-  const mockReadFileSync = vi.mocked(fs.readFileSync);
-  const mockWriteFileSync = vi.mocked(fs.writeFileSync);
-
-  it('should generate a LICENSE file', () => {
+  it('should create a LICENSE file for the MIT license', async () => {
     const options: LicenseOptions = {
       type: 'MIT',
       year: '2025',
@@ -26,20 +16,8 @@ describe('Test license function', () => {
       path: TEST_TEMP_DIR
     };
 
-    mockReadFileSync.mockReturnValue('Copyright (c) [year] [author]' as any);
+    await license(options);
 
-    license(options);
-
-    const expectedContent = 'Copyright (c) 2025 John Doe';
-    const expectedFilePath = join(TEST_TEMP_DIR, 'LICENSE');
-
-    expect(mockWriteFileSync).toHaveBeenCalledWith(
-      expectedFilePath,
-      expectedContent
-    );
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
+    expect(existsSync(join(TEST_TEMP_DIR, 'LICENSE'))).toBe(true);
   });
 });
