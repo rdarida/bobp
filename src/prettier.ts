@@ -1,13 +1,4 @@
-import { copyFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
-
-import { TEMPLATES_DIR } from './constants';
-
-/**
- * Absolute path to the Prettier configuration directory.
- * This directory contains Prettier-related configuration files.
- */
-const PRETTIER_DIR = join(TEMPLATES_DIR, 'prettier');
+import degit from 'degit';
 
 export type PrettierOptions = {
   /**
@@ -20,12 +11,9 @@ export type PrettierOptions = {
 /**
  * Copies Prettier configuration files into the current working directory.
  */
-export function prettier({ path }: PrettierOptions): void {
-  const files = readdirSync(PRETTIER_DIR);
-
-  for (const fileName of files) {
-    const src = join(PRETTIER_DIR, fileName);
-    const dest = join(path, `.${fileName}`);
-    copyFileSync(src, dest);
-  }
+export async function prettier({ path }: PrettierOptions): Promise<void> {
+  const emitter = degit(
+    'https://gist.github.com/rdarida/d087f8bbf55735a85a36967c20409678'
+  );
+  return emitter.clone(path);
 }
