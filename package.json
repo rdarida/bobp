@@ -39,12 +39,12 @@
     "yargs": "^18.2.0"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^11.0.1",
+    "@release-it/conventional-changelog": "^12.0.2",
     "@types/node": "^26.6.2",
     "@types/yargs": "^17.0.35",
     "@vitest/coverage-istanbul": "^5.0.1",
     "prettier": "^3.9.8",
-    "release-it": "^20.2.0",
+    "release-it": "^21.1.0",
     "tsup": "^8.5.1",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
