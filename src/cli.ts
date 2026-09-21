@@ -124,7 +124,7 @@ yargs(hideBin(process.argv))
         default: process.cwd()
       });
     },
-    options => prettier(options)
+    async options => await prettier(options)
   )
   .help()
   .strict()
