@@ -10,7 +10,7 @@ import { TEST_TEMP_DIR } from './constants';
 vi.mock('node:fs', () => {
   return {
     readdirSync: vi.fn(),
-    copyFileSync: vi.fn(),
+    copyFileSync: vi.fn()
   };
 });
 
