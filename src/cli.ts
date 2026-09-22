@@ -26,7 +26,7 @@ yargs(hideBin(process.argv))
   .demandCommand(1, 'Need 1')
   .command<AuditOptions>(
     'audit',
-    '',
+    'Checks dependency versions against the latest npm registry releases',
     yargs => {
       return yargs.option('path', {
         type: 'string',

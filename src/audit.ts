@@ -1,14 +1,25 @@
 import { existsSync, readFileSync } from 'node:fs';
 
+/**
+ * The audit configuration.
+ */
+export type AuditOptions = {
+  /**
+   * The path to the package.json file to audit.
+   */
+  path: string;
+};
+
 type PackageJSON = {
   dependencies: Record<string, string>;
   devDependencies: Record<string, string>;
 };
 
-export type AuditOptions = {
-  path: string;
-};
-
+/**
+ * Checks dependency versions against the latest npm registry releases.
+ *
+ * @param options The audit configuration.
+ */
 export async function audit({ path }: AuditOptions): Promise<void> {
   if (!existsSync(path)) {
     return;
