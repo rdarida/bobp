@@ -1,10 +1,18 @@
 import { describe, expect, it } from 'vitest';
 
-import { cover, license, next, prettier } from '../src/index';
+import { audit, cover, electron, license, next, prettier } from '../src/index';
 
 describe('Test exports', () => {
+  it('should export audit function', () => {
+    expect(audit).toBeTruthy();
+  });
+
   it('should export cover function', () => {
     expect(cover).toBeTruthy();
+  });
+
+  it('should export electron function', () => {
+    expect(electron).toBeTruthy();
   });
 
   it('should export license function', () => {
