@@ -35,6 +35,7 @@
   "dependencies": {
     "canvas": "^3.2.3",
     "degit": "^3.10.0",
+    "picocolors": "^1.1.1",
     "rimraf": "^6.1.3",
     "yargs": "^18.2.0"
   },
