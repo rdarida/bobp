@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.12.0](https://github.com/rdarida/bobp/compare/v0.11.1...v0.12.0) (2026-09-22)
+
+### Features
+
+* implement audit function ([c568bd1](https://github.com/rdarida/bobp/commit/c568bd165ab5f6a5fe20aa55271f9602c007ddcd))
+
 ## [0.11.1](https://github.com/rdarida/bobp/compare/v0.11.0...v0.11.1) (2026-09-21)
 
 ## [0.11.0](https://github.com/rdarida/bobp/compare/v0.10.15...v0.11.0) (2026-09-21)

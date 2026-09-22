@@ -38,6 +38,15 @@ npm i -g bobp
 
 ## Commands
 
+### `audit`
+
+Checks dependency versions against the latest npm registry releases.
+
+**Usage:**
+```sh
+npx bobp audit
+```
+
 ### `cover`
 
 Generates a PNG cover image (cover.png) in the current working directory.

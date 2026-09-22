@@ -1,3 +1,4 @@
+export * from './audit';
 export * from './cover';
 export * from './electron';
 export * from './license';

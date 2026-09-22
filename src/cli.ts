@@ -1,13 +1,17 @@
 #!/usr/bin/env node
+import { join } from 'node:path';
+
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import {
+  AuditOptions,
   CoverOptions,
   ElectronOptions,
   LicenseOptions,
   NextOptions,
   PrettierOptions,
+  audit,
   cover,
   electron,
   license,
@@ -20,6 +24,18 @@ yargs(hideBin(process.argv))
   .scriptName('bobp')
   .usage('$0 <cmd> [args]', 'Usage')
   .demandCommand(1, 'Need 1')
+  .command<AuditOptions>(
+    'audit',
+    'Checks dependency versions against the latest npm registry releases',
+    yargs => {
+      return yargs.option('path', {
+        type: 'string',
+        describe: '',
+        default: join(process.cwd(), 'package.json')
+      });
+    },
+    async options => audit(options)
+  )
   .command<CoverOptions>(
     'cover <title> <description>',
     'Generates a PNG cover image (cover.png) in the current working directory',
