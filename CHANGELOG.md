@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.13.0](https://github.com/rdarida/bobp/compare/v0.12.0...v0.13.0) (2026-09-24)
+
+### Features
+
+* implement audit feature ([d0fdf87](https://github.com/rdarida/bobp/commit/d0fdf87b1d354dc5d35ed68033591ce18c52ccae))
+
+### Bug Fixes
+
+* handle undefined dependencies or devDependencies ([7bd8426](https://github.com/rdarida/bobp/commit/7bd8426b7aa29699599899397e1a5032c7675e30))
+
 ## [0.12.0](https://github.com/rdarida/bobp/compare/v0.11.1...v0.12.0) (2026-09-22)
 
 ### Features

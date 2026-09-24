@@ -27,7 +27,7 @@ export async function audit({ path }: AuditOptions): Promise<void> {
     return;
   }
 
-  const { dependencies, devDependencies } = JSON.parse(
+  const { dependencies = {}, devDependencies = {} } = JSON.parse(
     readFileSync(path, 'utf-8')
   ) as Record<string, Record<string, string>>;
 
