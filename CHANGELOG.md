@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.1](https://github.com/rdarida/bobp/compare/v0.13.0...v0.13.1) (2026-09-30)
+
+### Bug Fixes
+
+* [prettier] use tmpdir for degit, then cp to path ([ce05622](https://github.com/rdarida/bobp/commit/ce05622d125e45deddec0f36731cbd5acb7f120b))
+
 ## [0.13.0](https://github.com/rdarida/bobp/compare/v0.12.0...v0.13.0) (2026-09-24)
 
 ### Features
