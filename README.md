@@ -106,7 +106,12 @@ npx bobp prettier
 - [Documentation](https://rdarida.github.io/bobp/)
 - [Rowan Atkinson demonstrating how funny "Bob" can be](https://www.youtube.com/watch?v=wOdfNwD9cEA)
 
-- **License**
+- **icon**
+  - [Favicon Size: Complete Reference](https://favicon.io/tutorials/favicon-sizes/)
+  - [Apple Icon Image format (.icns)](https://en.wikipedia.org/wiki/Apple_Icon_Image_format)
+  - [png2icons](https://www.npmjs.com/package/png2icons)
+
+- **license**
   - [choosealicense.com](https://choosealicense.com/)
   - [choosealicense.com License List](https://github.com/github/choosealicense.com/tree/gh-pages/_licenses)
   - [GitHub License List](https://api.github.com/licenses)
