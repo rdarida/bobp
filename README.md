@@ -67,6 +67,16 @@ in the current working directory.
 npx bobp electron "App Name"
 ```
 
+### `icon`
+
+Generates an icon set from a source image in the current working directory.
+The source image should be a 1024x1024 PNG file.
+
+**Usage:**
+```sh
+npx bobp icon --file "path/to/source_image.png"
+```
+
 ### `license`
 
 Generates a LICENSE file in the current working directory.

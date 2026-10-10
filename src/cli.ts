@@ -61,7 +61,7 @@ yargs(hideBin(process.argv))
   )
   .command<IconOptions>(
     'icon',
-    'Generates a set of icons in the current working directory',
+    'Generates an icon set in the current working directory',
     yargs => yargs,
     options => icon(options)
   )
