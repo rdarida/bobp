@@ -3,9 +3,9 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { LicenseOptions, license } from '../src/license';
+import { TEST_TEMP_DIR } from './test_constants';
 
-import { TEST_TEMP_DIR } from './constants';
+import { LicenseOptions, license } from '../src/license';
 
 describe('Test license function', () => {
   it('should create a LICENSE file for the MIT license', async () => {

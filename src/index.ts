@@ -1,6 +1,7 @@
 export * from './audit';
 export * from './cover';
 export * from './electron';
+export * from './icon';
 export * from './license';
 export * from './next';
 export * from './prettier';

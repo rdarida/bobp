@@ -3,9 +3,9 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { next } from '../src/next';
+import { TEST_TEMP_DIR } from './test_constants';
 
-import { TEST_TEMP_DIR } from './constants';
+import { next } from '../src/next';
 
 describe('Test next function', () => {
   it('should create a Next.js project', async () => {

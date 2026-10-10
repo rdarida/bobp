@@ -3,9 +3,9 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { cover } from '../src/cover';
+import { TEST_TEMP_DIR } from './test_constants';
 
-import { TEST_TEMP_DIR } from './constants';
+import { cover } from '../src/cover';
 
 describe('Test cover function', () => {
   it('should create a non-empty cover.png file', () => {

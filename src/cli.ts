@@ -8,12 +8,14 @@ import {
   AuditOptions,
   CoverOptions,
   ElectronOptions,
+  IconOptions,
   LicenseOptions,
   NextOptions,
   PrettierOptions,
   audit,
   cover,
   electron,
+  icon,
   license,
   next,
   normalize,
@@ -27,20 +29,19 @@ yargs(hideBin(process.argv))
   .command<AuditOptions>(
     'audit',
     'Checks dependency versions against the latest npm registry releases',
-    yargs => {
-      return yargs.option('path', {
+    yargs =>
+      yargs.option('path', {
         type: 'string',
         describe: '',
         default: join(process.cwd(), 'package.json')
-      });
-    },
+      }),
     async options => audit(options)
   )
   .command<CoverOptions>(
     'cover <title> <description>',
     'Generates a PNG cover image (cover.png) in the current working directory',
-    yargs => {
-      return yargs
+    yargs =>
+      yargs
         .positional('title', {
           type: 'string',
           describe: 'Main title text displayed on the cover',
@@ -55,15 +56,20 @@ yargs(hideBin(process.argv))
           type: 'string',
           describe: 'Output path for the generated cover image',
           default: process.cwd()
-        });
-    },
+        }),
     options => cover(options)
+  )
+  .command<IconOptions>(
+    'icon',
+    'Generates a set of icons in the current working directory',
+    yargs => yargs,
+    options => icon(options)
   )
   .command<LicenseOptions>(
     'license <author> [year] [type]',
     'Generates a LICENSE file in the current working directory',
-    yargs => {
-      return yargs
+    yargs =>
+      yargs
         .positional('author', {
           type: 'string',
           describe: 'Author or copyright holder name',
@@ -83,15 +89,14 @@ yargs(hideBin(process.argv))
           type: 'string',
           describe: 'Output path for the generated LICENSE file',
           default: process.cwd()
-        });
-    },
+        }),
     async options => await license(options)
   )
   .command<ElectronOptions>(
     'electron <productName> [name]',
     'Creates a new Electron project in the current working directory',
-    yargs => {
-      return yargs
+    yargs =>
+      yargs
         .positional('productName', {
           type: 'string',
           describe: 'Name of the application',
@@ -105,8 +110,7 @@ yargs(hideBin(process.argv))
           type: 'string',
           describe: 'Output path for the generated Electron project',
           default: process.cwd()
-        });
-    },
+        }),
     async ({ productName, name, path }) => {
       name = name || normalize(productName);
       await electron({ name, productName, path });
@@ -115,8 +119,8 @@ yargs(hideBin(process.argv))
   .command<NextOptions>(
     'next <name>',
     'Creates a new Next.js project in the current working directory',
-    yargs => {
-      return yargs
+    yargs =>
+      yargs
         .positional('name', {
           type: 'string',
           describe: 'Name of the project directory and npm package',
@@ -126,22 +130,20 @@ yargs(hideBin(process.argv))
           type: 'string',
           describe: 'Output path for the generated Next.js project',
           default: process.cwd()
-        });
-    },
+        }),
     async options => await next(options)
   )
   .command<PrettierOptions>(
     'prettier',
     'Copies Prettier configuration files into the current working directory',
-    yargs => {
-      return yargs.option('path', {
+    yargs =>
+      yargs.option('path', {
         type: 'string',
         describe: 'Output path for the generated Prettier configuration files',
         default: process.cwd()
-      });
-    },
+      }),
     async options => await prettier(options)
   )
   .help()
   .strict()
-  .parse();
+  .parseSync();

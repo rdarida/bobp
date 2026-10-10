@@ -3,9 +3,9 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { prettier } from '../src/prettier';
+import { TEST_TEMP_DIR } from './test_constants';
 
-import { TEST_TEMP_DIR } from './constants';
+import { prettier } from '../src/prettier';
 
 describe('Test prettier function', () => {
   it('should create prettier configuration files in the target directory', async () => {

@@ -1,8 +1,8 @@
 import { existsSync, mkdirSync } from 'node:fs';
 
-import { rimrafSync } from 'rimraf';
+import { TEST_TEMP_DIR } from './test_constants';
 
-import { TEST_TEMP_DIR } from './constants';
+import { rimrafSync } from 'rimraf';
 
 export function setup(): void {
   if (existsSync(TEST_TEMP_DIR)) {

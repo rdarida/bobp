@@ -3,10 +3,10 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
+import { TEST_TEMP_DIR } from './test_constants';
+
 import { normalize } from '../src/utils';
 import { electron } from '../src/electron';
-
-import { TEST_TEMP_DIR } from './constants';
 
 describe('Test electron function', () => {
   const productName = 'Electron App';
