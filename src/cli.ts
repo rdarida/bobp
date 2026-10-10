@@ -8,6 +8,7 @@ import {
   AuditOptions,
   CoverOptions,
   ElectronOptions,
+  IconFormat,
   IconOptions,
   LicenseOptions,
   NextOptions,
@@ -60,9 +61,24 @@ yargs(hideBin(process.argv))
     options => cover(options)
   )
   .command<IconOptions>(
-    'icon',
-    'Generates an icon set in the current working directory',
-    yargs => yargs,
+    'icon <source>',
+    'Generates an icon set from a source image in the current working directory',
+    yargs =>
+      yargs
+        .positional('source', {
+          type: 'string',
+          describe: 'Path to the source image file',
+          demandOption: true
+        })
+        .option('format', {
+          type: 'string',
+          describe: 'Output format of the generated icon set',
+          default: IconFormat.ALL
+        })
+        .option('path', {
+          type: 'string',
+          describe: 'Output path for the generated icon set'
+        }),
     options => icon(options)
   )
   .command<LicenseOptions>(
