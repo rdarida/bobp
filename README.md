@@ -67,7 +67,7 @@ in the current working directory.
 npx bobp electron "App Name"
 ```
 
-### `gmae`
+### `game`
 
 Creates a new game project from a
 [predefined template](https://github.com/rdarida/template-game)
