@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.14.1](https://github.com/rdarida/bobp/compare/v0.14.0...v0.14.1) (2026-11-20)
+
+### Bug Fixes
+
+* add game command to the cli ([5e48122](https://github.com/rdarida/bobp/commit/5e481224d01382775f5aa07865675e4f0293ad28))
+
 ## [0.14.0](https://github.com/rdarida/bobp/compare/v0.13.1...v0.14.0) (2026-11-20)
 
 ### Features
