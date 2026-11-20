@@ -14,6 +14,7 @@ describe('Test cli', () => {
   let coverMock: Mock;
   let licenseMock: Mock;
   let electronMock: Mock;
+  let gameMock: Mock;
   let nextMock: Mock;
   let prettierMock: Mock;
 
@@ -27,6 +28,7 @@ describe('Test cli', () => {
     coverMock = vi.fn();
     licenseMock = vi.fn();
     electronMock = vi.fn();
+    gameMock = vi.fn();
     nextMock = vi.fn();
     prettierMock = vi.fn();
 
@@ -35,6 +37,7 @@ describe('Test cli', () => {
       cover: coverMock,
       license: licenseMock,
       electron: electronMock,
+      game: gameMock,
       next: nextMock,
       prettier: prettierMock
     }));
@@ -122,6 +125,21 @@ describe('Test cli', () => {
     expect(electronMock).toHaveBeenCalledWith({
       productName: 'ElectronApp',
       name: 'electron-app',
+      path: 'output'
+    });
+  });
+
+  it('should execute game command with all the command line options', async () => {
+    process.argv = ['node', 'bobp', 'game', 'test-game', '--path', 'output'];
+
+    await import('../src/cli.js');
+
+    expect(gameMock).toHaveBeenCalledTimes(1);
+
+    expect(gameMock).toHaveBeenCalledWith({
+      $0: 'bobp',
+      _: ['game'],
+      name: 'test-game',
       path: 'output'
     });
   });
