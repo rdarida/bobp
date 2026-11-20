@@ -1,6 +1,6 @@
 {
   "name": "bobp",
-  "version": "0.13.1",
+  "version": "0.14.0",
   "description": "How can I help you, Bobp?",
   "keywords": [],
   "license": "MIT",
@@ -46,7 +46,7 @@
     "@vitest/coverage-istanbul": "^5.0.1",
     "prettier": "^3.9.9",
     "prettier-plugin-brace-style": "^0.10.3",
-    "release-it": "^21.1.0",
+    "release-it": "^21.1.2",
     "tsup": "^8.5.1",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",

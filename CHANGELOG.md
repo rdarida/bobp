@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.14.0](https://github.com/rdarida/bobp/compare/v0.13.1...v0.14.0) (2026-11-20)
+
+### Features
+
+* implement game function ([560dccb](https://github.com/rdarida/bobp/commit/560dccbcd451b5f35dbc8f67a439a50ad7809188))
+
+### Bug Fixes
+
+* remove test .temp folder at teardown ([1db70fb](https://github.com/rdarida/bobp/commit/1db70fb7beb7dbf25da93404979763475255762b))
+
 ## [0.13.1](https://github.com/rdarida/bobp/compare/v0.13.0...v0.13.1) (2026-09-30)
 
 ### Bug Fixes
