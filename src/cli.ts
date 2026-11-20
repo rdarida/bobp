@@ -8,12 +8,14 @@ import {
   AuditOptions,
   CoverOptions,
   ElectronOptions,
+  GameOptions,
   LicenseOptions,
   NextOptions,
   PrettierOptions,
   audit,
   cover,
   electron,
+  game,
   license,
   next,
   normalize,
@@ -111,6 +113,24 @@ yargs(hideBin(process.argv))
       name = name || normalize(productName);
       await electron({ name, productName, path });
     }
+  )
+  .command<GameOptions>(
+    'game <name>',
+    'Create a new game project in the current working directory',
+    yargs => {
+      return yargs
+        .positional('name', {
+          type: 'string',
+          describe: 'Name of the project directory and npm package',
+          demandOption: true
+        })
+        .option('path', {
+          type: 'string',
+          describe: 'Output path for the generated game project',
+          default: process.cwd()
+        });
+    },
+    async options => await game(options)
   )
   .command<NextOptions>(
     'next <name>',

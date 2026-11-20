@@ -67,6 +67,17 @@ in the current working directory.
 npx bobp electron "App Name"
 ```
 
+### `gmae`
+
+Creates a new game project from a
+[predefined template](https://github.com/rdarida/template-game)
+in the current working directory.
+
+**Usage:**
+```sh
+npx bobp game "Game Name"
+```
+
 ### `license`
 
 Generates a LICENSE file in the current working directory.
