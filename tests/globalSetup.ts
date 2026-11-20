@@ -13,5 +13,5 @@ export function setup(): void {
 }
 
 export function teardown(): void {
-  // rimrafSync(TEST_TEMP_DIR);
+  rimrafSync(TEST_TEMP_DIR);
 }
